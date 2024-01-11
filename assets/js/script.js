@@ -1,5 +1,4 @@
 // KD: Carousel script
-$('.carousel').carousel();
 
 // list of drink IDs
 const drinkList = [
