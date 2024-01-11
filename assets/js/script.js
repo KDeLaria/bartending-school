@@ -1,3 +1,5 @@
+var hintEl = $('#hintText');
+
 // list of drink IDs
 const drinkList = [
   11728, 17827, 17186, 17250, 17180, 11324, 11003, 15941, 17185, 17218, 11423,
@@ -29,7 +31,9 @@ const getDrinkButton = $("#getDrink");
 getDrinkButton.on("click", function (e) {
   selectRandomDrink();
   getDrink(drinkId);
-});
+  // PJM Update the text displayed in the hint modal for how many ingredients in drink 
+  hintEl.append("<p>There are " + ingredients.length + " ingredients you need to select.</p>");
+  });
 
 // generate a random drinkId from the above array
 function selectRandomDrink() {
