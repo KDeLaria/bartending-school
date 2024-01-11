@@ -100,6 +100,7 @@ async function getDrink(drinkId) {
       drinkObject.ingredients = ingredients;
       drinkObject.measurements = measurements;
     });
+    $("#drink-image").attr("src",drinkObject.thumbnail);
     generateIngredients(drinkObject);
 }
 
@@ -125,4 +126,3 @@ function generateIngredients(drinkObject) {
     }
   }
 }
-
