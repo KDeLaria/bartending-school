@@ -1,3 +1,6 @@
+// KD: Carousel script
+$('.carousel').carousel();
+
 // list of drink IDs
 const drinkList = [
   11728, 17827, 17186, 17250, 17180, 11324, 11003, 15941, 17185, 17218, 11423,
