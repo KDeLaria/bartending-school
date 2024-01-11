@@ -99,8 +99,14 @@ async function getDrink(drinkId) {
     $('#glass').text(`Use a ${drinkObject.glass} glass`);
     $('#instructions').text(`${drinkObject.instructions}`);
     $('#thumbnail').attr("src",`${drinkObject.thumbnail}`);  
-  console.log(drinkObject.drinkName)
-  console.log(drinkName)
+    $('#step1').text(`Pour ${drinkObject.measurments[0]} of ${drinkObject.ingredients[0]}`);
+    $('#step2').text(`Use a ${drinkObject.glass} glass`);
+    $('#step3').text(`Use a ${drinkObject.glass} glass`);
+    $('#step4').text(`Use a ${drinkObject.glass} glass`);
+    $('#glass').text(`Use a ${drinkObject.glass} glass`);
+    $('#glass').text(`Use a ${drinkObject.glass} glass`);
+    $('#glass').text(`Use a ${drinkObject.glass} glass`);
+    $('#glass').text(`Use a ${drinkObject.glass} glass`);
 }
 
 
