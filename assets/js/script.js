@@ -104,6 +104,25 @@ async function getDrink(drinkId) {
 }
 
 function generateIngredients(drinkObject) {
-  console.log(drinkObject);
+
+  var correctIngredients = drinkObject.ingredients;
+  var currentIngredients = [];
+
+  for (i = 0; i < correctIngredients.length; i++) {
+    correctIngredients[i] = correctIngredients[i].toLowerCase();
+    currentIngredients.push(correctIngredients[i]);
+    }
+
+  for (i = currentIngredients.length; i < 15; i++) {
+    var extraIngredientIndex = random(0, extraIngredients.length);
+    var randomIngredient = extraIngredients[extraIngredientIndex];
+
+    if (currentIngredients.indexOf(randomIngredient) === -1) {
+      currentIngredients.push(randomIngredient);
+    }
+    else {
+      i--;
+    }
+  }
 }
 
