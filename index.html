@@ -10,35 +10,74 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
+   <div class="container">
+      <div class="row">
 
-            <div class="col-md-8">
+         <div class="col-md-8">
 
-                <div class="bg-primary">
-                    <h1>Bartender School</h1>
-                    <p>Your Career on the Rocks?</p>
-                </div>
+            <div class="bg-primary">
+               <h1>Bartender School</h1>
+               <p>Your Career on the Rocks?</p>
+            </div>
 
-                <div class="bg-primary">
-                    <p>Insert Modal Here</p>
-                </div>
+            <!-- PJM  Added modal for instructions-->
+            <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog">
+               <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title">Instructions</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                        </button>
+                     </div>
+                     <div class="modal-body">
+                        <p>When you click the "Make Me A Drink!" button, a picture and name of a random drink will be
+                           displayed on the right of the screen. A list of possible ingredients will be displayed to the
+                           left of the drink card. Using the checkboxes, select the items that are need to create the
+                           drink.</p>
+                        <p>If you need a hint, you can hover over the "Hint" button and it will tell you how many
+                           ingredients are in the drink.</p>
+                        <p>If you do not know the answer, you can click the "I give up!" button. The drink will be added
+                           to a list of drinks that you need to practice.</p>
+                        <p>Clicking on any of the drinks in your practice list will open a new page with a drink card
+                           you can use for reference.</p>
+                        <p>Click on the "Make Me A Drink!" button again for a new drink.</p>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#instructionModal">
+               Instructions
+            </button>
 
                 <div>
                     <button id="getDrink" type="button" class="btn btn-primary btn-lg btn-dark">Get me a drink!</button>
                 </div>
 
-                <div class="bg-success">
-                    <p> THIS IS WHERE THE CHECKBOXES GO </p>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 bg-primary">
-                        <p> MIX IT BUTTON!</p>
-                    </div>
+            <div class="bg-success">
+               <p> THIS IS WHERE THE CHECKBOXES GO </p>
+            </div>
+            <div class="row">
+               <div class="col-md-4 bg-primary">
+                  <p> MIX IT BUTTON!</p>
+               </div>
 
-                    <div class="col-md-4 bg-secondary">
-                        <p>HINT HOVER</p>
-                    </div>
+               <div class="col-md-4 bg-secondary">
+                  <p>HINT HOVER</p>
+               </div>
+
+               <div class="col-md-4 bg-primary">
+                  <p>MAKE CARD BUTTON!</p>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-4 bg-secondary">
+                  <p>Job Card 1</p>
+               </div>
 
                     <div class="col-md-4 bg-primary">
                         <p>MAKE CARD BUTTON!</p>
@@ -116,10 +155,17 @@
 
 
 
+         </div>
+      </div>
+   </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="./assets/js/script.js"></script>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+   <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
