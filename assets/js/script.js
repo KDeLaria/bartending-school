@@ -1,5 +1,5 @@
-// KD: Carousel script
-$('.carousel').carousel();
+var hintEl = $('#hintText');
+
 
 // list of drink IDs
 const drinkList = [
@@ -32,7 +32,9 @@ const getDrinkButton = $("#getDrink");
 getDrinkButton.on("click", function (e) {
   selectRandomDrink();
   getDrink(drinkId);
-});
+  // PJM Update the text displayed in the hint modal for how many ingredients in drink 
+  hintEl.append("<p>There are " + ingredients.length + " ingredients you need to select.</p>");
+  });
 
 // generate a random drinkId from the above array
 function selectRandomDrink() {
