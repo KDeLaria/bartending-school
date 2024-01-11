@@ -51,48 +51,46 @@ function getDrink(drinkId) {
       return response.json();
     })
     .then(function (data) {
-      for (var i = 0; i < data.drinks.length; i++) {
-        drinkName = data.drinks[i].strDrink;
-        instructions = data.drinks[i].strInstructions;
-        glass = data.drinks[i].strGlass;
-        thumbnail = data.drinks[i].strDrinkThumb;
+        drinkName = data.drinks[0].strDrink;
+        instructions = data.drinks[0].strInstructions;
+        glass = data.drinks[0].strGlass;
+        thumbnail = data.drinks[0].strDrinkThumb;
         ingredients = [
-          data.drinks[i].strIngredient1,
-          data.drinks[i].strIngredient2,
-          data.drinks[i].strIngredient3,
-          data.drinks[i].strIngredient4,
-          data.drinks[i].strIngredient5,
-          data.drinks[i].strIngredient6,
-          data.drinks[i].strIngredient7,
-          data.drinks[i].strIngredient8,
-          data.drinks[i].strIngredient9,
-          data.drinks[i].strIngredient10,
-          data.drinks[i].strIngredient11,
-          data.drinks[i].strIngredient12,
-          data.drinks[i].strIngredient13,
-          data.drinks[i].strIngredient14,
-          data.drinks[i].strIngredient15,
+          data.drinks[0].strIngredient1,
+          data.drinks[0].strIngredient2,
+          data.drinks[0].strIngredient3,
+          data.drinks[0].strIngredient4,
+          data.drinks[0].strIngredient5,
+          data.drinks[0].strIngredient6,
+          data.drinks[0].strIngredient7,
+          data.drinks[0].strIngredient8,
+          data.drinks[0].strIngredient9,
+          data.drinks[0].strIngredient10,
+          data.drinks[0].strIngredient11,
+          data.drinks[0].strIngredient12,
+          data.drinks[0].strIngredient13,
+          data.drinks[0].strIngredient14,
+          data.drinks[0].strIngredient15,
         ];
         ingredients = ingredients.splice(0, ingredients.indexOf(null));
         measurements = [
-          data.drinks[i].strMeasure1,
-          data.drinks[i].strMeasure2,
-          data.drinks[i].strMeasure3,
-          data.drinks[i].strMeasure4,
-          data.drinks[i].strMeasure5,
-          data.drinks[i].strMeasure6,
-          data.drinks[i].strMeasure7,
-          data.drinks[i].strMeasure8,
-          data.drinks[i].strMeasure9,
-          data.drinks[i].strMeasure10,
-          data.drinks[i].strMeasure11,
-          data.drinks[i].strMeasure12,
-          data.drinks[i].strMeasure13,
-          data.drinks[i].strMeasure14,
-          data.drinks[i].strMeasure15,
+          data.drinks[0].strMeasure1,
+          data.drinks[0].strMeasure2,
+          data.drinks[0].strMeasure3,
+          data.drinks[0].strMeasure4,
+          data.drinks[0].strMeasure5,
+          data.drinks[0].strMeasure6,
+          data.drinks[0].strMeasure7,
+          data.drinks[0].strMeasure8,
+          data.drinks[0].strMeasure9,
+          data.drinks[0].strMeasure10,
+          data.drinks[0].strMeasure11,
+          data.drinks[0].strMeasure12,
+          data.drinks[0].strMeasure13,
+          data.drinks[0].strMeasure14,
+          data.drinks[0].strMeasure15,
         ];
         measurements = measurements.splice(0, measurements.indexOf(null));
-      }
 
       // assign the variables to the drinkObject
       drinkObject.drinkName = drinkName;
