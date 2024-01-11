@@ -32,7 +32,6 @@ const getDrinkButton = $("#getDrink");
 getDrinkButton.on("click", function (e) {
   selectRandomDrink();
   getDrink(drinkId);
-  console.log(drinkObject);
 });
 
 // generate a random drinkId from the above array
@@ -42,11 +41,11 @@ function selectRandomDrink() {
   }
 
   // fetch the drink info from the API using the generated drink ID
-function getDrink(drinkId) {
+async function getDrink(drinkId) {
   var drinkUrl =
     "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId;
 
-  fetch(drinkUrl)
+  await fetch(drinkUrl)
     .then(function (response) {
       return response.json();
     })
@@ -100,4 +99,10 @@ function getDrink(drinkId) {
       drinkObject.ingredients = ingredients;
       drinkObject.measurements = measurements;
     });
+    generateIngredients(drinkObject);
 }
+
+function generateIngredients(drinkObject) {
+  console.log(drinkObject);
+}
+
