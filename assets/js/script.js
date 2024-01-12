@@ -304,7 +304,9 @@ let mixItBtn = $("#mix-it");
 mixItBtn.on("click", function () {
    console.log("You just clicked on the Mix It button");
    // Make a sound when hitting the button
-   // $("#dropping-ice").play();
+   let snd = new Audio("./assets/audio/martini_shake_pour-34765.mp3");
+   snd.play();
+  snd.currentTime=0;
    // Determine if the user has selected the correct items
 
 
@@ -322,6 +324,3 @@ mixItBtn.on("click", function () {
 
 //calls the mistake history function on line 110 so that the browser will load the local storage of the user
 mistakeHistory();
-$("#mix-it").on("click", function (){
-  $("#dropping-ice").play(); //KD
-})
