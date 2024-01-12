@@ -280,8 +280,4 @@ giveUp.on('click', function() {
 
 //calls the mistake history function on line 110 so that the browser will load the local storage of the user
 mistakeHistory()
-// KD
-$("#mix-it").on("click", mixDrink); 
-function mixDrink () {
-  $("#dropping-ice").play();
-}
+$("#dropping-ice").play(); //KD
