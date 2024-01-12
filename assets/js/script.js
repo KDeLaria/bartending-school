@@ -107,9 +107,10 @@ function random(min, max) {
 const getDrinkButton = $("#getDrink");
 
 // event listener for the getDrink button, which generates a random drink ID and fetches the drink info from the API
-getDrinkButton.on("click", function (e) {
+getDrinkButton.on("click", async function (e) {
   selectRandomDrink();
-  getDrink(drinkId);
+  const drink = await getDrink(drinkId);
+  generateIngredients(drink);
   // PJM Update the text displayed in the hint modal for how many ingredients in drink
   hintEl.append(
     "<p>There are " +
@@ -184,7 +185,7 @@ async function getDrink(drinkId) {
       drinkObject.measurements = measurements;
     });
   $("#drink-image").attr("src", drinkObject.thumbnail);
-  generateIngredients(drinkObject);
+  return drinkObject;
 }
 
 function generateIngredients(drinkObject) {
@@ -206,4 +207,5 @@ function generateIngredients(drinkObject) {
       i--;
     }
   }
+  console.log(currentIngredients);
 }
