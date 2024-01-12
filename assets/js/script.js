@@ -271,7 +271,6 @@ function clearIngredients() {
 let mixItBtn = $("#mix-it");
 mixItBtn.on("click", function () {
   if (drinkObject) {
-    console.log("You just clicked on the Mix It button");
     // Make a sound when hitting the button
     // $("#dropping-ice").play();
 
@@ -295,10 +294,12 @@ function evaluateSelections() {
 
   // JP if both arrays aren't the same length, return, otherwise compare the items in each array
   if (selectedIngredients.length !== correctIngredients.length) {
+    console.log("try again!");
     return false;
   } else {
     for (var i = 0; i < selectedIngredients.length; i++) {
       if (selectedIngredients[i] !== correctIngredients[i]) {
+        console.log("try again!");
         return false;
       }
     }
@@ -308,7 +309,7 @@ function evaluateSelections() {
   var giveUpEl = $("#giveUpBtn");
   giveUpEl.text("Make a drink card");
   changeGiveUp = true;
-
+console.log("correct!");
   return true;
 }
 
