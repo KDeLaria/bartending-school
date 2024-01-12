@@ -207,3 +207,37 @@ function generateIngredients(drinkObject) {
     }
   }
 }
+
+//rb2277
+//Function that sets the text content of the page to the drinks, and persits upon refresh.
+function mistakeHistory() {
+  for(let i = 1; i <= 5; i++) {
+    let currentMistake = localStorage.getItem("Mistake Drink " + i);
+      $("#mistake" + i).text(currentMistake);
+  }
+  }
+
+//jquery call to the give up button
+let giveUp = $("#giveUpBtn");
+
+//event listener on clock of the give up button. It saves the current drink  name with saveDrink
+giveUp.on('click', function() {
+  let saveDrink = drinkObject.drinkName;
+
+//Will shift all previous drinks down 1 position, and add the latest drink to the top
+  for(let i = 4; i >= 1; i--) {
+    let recentMistake = localStorage.getItem("Mistake Drink " + i);
+    if(recentMistake != null) {
+    localStorage.setItem("Mistake Drink " + (i + 1), recentMistake);
+}
+}
+
+
+  localStorage.setItem("Mistake Drink 1", saveDrink);
+
+  //calls the makeHistory function at the end of the click listener so that it can update the content of the page.
+  mistakeHistory();
+})
+
+//calls the mistake history function on line 110 so that the browser will load the local storage of the user
+mistakeHistory()
