@@ -108,6 +108,7 @@ const getDrinkButton = $("#getDrink");
 
 // event listener for the getDrink button, which generates a random drink ID and fetches the drink info from the API
 getDrinkButton.on("click", function (e) {
+  $("#btnDiv").removeClass("d-none")
   selectRandomDrink();
   getDrink(drinkId);
   // PJM Update the text displayed in the hint modal for how many ingredients in drink
