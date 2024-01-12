@@ -212,16 +212,16 @@ function renderIngredients(currentIngredients) {
   const currentIngredientsEl = $("#ingredients");
 
   const ingredientsListEl = $("<div>");
-  ingredientsListEl.addClass("container-fluid py-2 my-1 border border-dark text-center");
+  ingredientsListEl.addClass("container-fluid py-2 my-1 border border-dark text-left");
   currentIngredientsEl.append(ingredientsListEl);
 
   const ingredientRowEl = $("<div>");
-  ingredientRowEl.addClass("row");
+  ingredientRowEl.addClass("row row-cols-2 row-cols-md-3");
   ingredientsListEl.append(ingredientRowEl);
 
   for (i = 0; i < currentIngredients.length; i++) {
     const ingredientColumnEl = $("<div>");
-    ingredientColumnEl.addClass("col-auto");
+    ingredientColumnEl.addClass("col");
     ingredientRowEl.append(ingredientColumnEl);
 
     let ingredientCheckbox = $("<input>");
@@ -231,7 +231,7 @@ function renderIngredients(currentIngredients) {
     ingredientColumnEl.append(ingredientCheckbox);
 
     let ingredientCheckboxLabel = $("<label>");
-    ingredientCheckboxLabel.addClass("form-check-label me-2" + " ingredient" + i);
+    ingredientCheckboxLabel.addClass("form-check-label" + " ingredient" + i);
     ingredientCheckboxLabel.attr("for", "flexCheckDefault");
     ingredientCheckboxLabel.text(currentIngredients[i]);
     ingredientColumnEl.append(ingredientCheckboxLabel);
