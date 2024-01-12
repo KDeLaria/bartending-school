@@ -51,7 +51,7 @@ var extraIngredients = [
   "cranberry juice",
   "angostura bitters",
   "orange bitters",
-  "Simple syrup",
+  "simple syrup",
   "egg white",
   "club soda",
   "grenadine",
@@ -112,11 +112,10 @@ const getDrinkButton = $("#getDrink");
 
 // event listener for the getDrink button, which generates a random drink ID and fetches the drink info from the API
 getDrinkButton.on("click", async function (e) {
-  $("#btnDiv").removeClass("d-none")
+  $("#btnDiv").removeClass("d-none");
   selectRandomDrink();
   const drink = await getDrink(drinkId);
   generateIngredients(drink);
-  console.log(drink.ingredients.length)
 });
 
 // generate a random drinkId from the above array
@@ -215,20 +214,33 @@ function generateIngredients(drinkObject) {
 // JP Render the current ingredients on the page
 function renderIngredients(currentIngredients) {
   clearIngredients();
+  currentIngredients = currentIngredients.sort();
   const currentIngredientsEl = $("#ingredients");
 
-  const ingredientsListEl = $("<ul>");
+  const ingredientsListEl = $("<div>");
+  ingredientsListEl.addClass("container-fluid py-2 my-1 border border-dark text-left");
   currentIngredientsEl.append(ingredientsListEl);
 
-  if (ingredientsListEl) {
-    ingredientsListEl.html("");
-  }
+  const ingredientRowEl = $("<div>");
+  ingredientRowEl.addClass("row row-cols-2 row-cols-md-3");
+  ingredientsListEl.append(ingredientRowEl);
 
   for (i = 0; i < currentIngredients.length; i++) {
-    let ingredientEl = $("<li>");
-    ingredientEl.attr("id", "ingredient" + i);
-    ingredientEl.text(currentIngredients[i]);
-    ingredientsListEl.append(ingredientEl);
+    const ingredientColumnEl = $("<div>");
+    ingredientColumnEl.addClass("col");
+    ingredientRowEl.append(ingredientColumnEl);
+
+    let ingredientCheckbox = $("<input>");
+    ingredientCheckbox.addClass("form-check-input me-1" + " ingredient" + i);
+    ingredientCheckbox.attr("type", "checkbox");
+    ingredientCheckbox.attr("id", "flexCheckDefault");
+    ingredientColumnEl.append(ingredientCheckbox);
+
+    let ingredientCheckboxLabel = $("<label>");
+    ingredientCheckboxLabel.addClass("form-check-label" + " ingredient" + i);
+    ingredientCheckboxLabel.attr("for", "flexCheckDefault");
+    ingredientCheckboxLabel.text(currentIngredients[i]);
+    ingredientColumnEl.append(ingredientCheckboxLabel);
   }
 
   // PJM Update the text displayed in the hint modal for how many ingredients in drink
@@ -256,64 +268,32 @@ function clearIngredients() {
 //rb2277
 //Function that sets the text content of the page to the drinks, and persits upon refresh.
 function mistakeHistory() {
-  for(let i = 1; i <= 5; i++) {
+  for (let i = 1; i <= 5; i++) {
     let currentMistake = localStorage.getItem("Mistake Drink " + i);
-      $("#mistake" + i).text(currentMistake);
+    $("#mistake" + i).text(currentMistake);
   }
-  }
+}
 
 //jquery call to the give up button
 let giveUp = $("#giveUpBtn");
 
 //event listener on clock of the give up button. It saves the current drink  name with saveDrink
-giveUp.on('click', function() {
+giveUp.on("click", function () {
   let saveDrink = drinkObject.drinkName;
 
-//Will shift all previous drinks down 1 position, and add the latest drink to the top
-  for(let i = 4; i >= 1; i--) {
+  //Will shift all previous drinks down 1 position, and add the latest drink to the top
+  for (let i = 4; i >= 1; i--) {
     let recentMistake = localStorage.getItem("Mistake Drink " + i);
-    if(recentMistake != null) {
-    localStorage.setItem("Mistake Drink " + (i + 1), recentMistake);
-}
-}
-
+    if (recentMistake != null) {
+      localStorage.setItem("Mistake Drink " + (i + 1), recentMistake);
+    }
+  }
 
   localStorage.setItem("Mistake Drink 1", saveDrink);
 
   //calls the makeHistory function at the end of the click listener so that it can update the content of the page.
   mistakeHistory();
-})
-
-//calls the mistake history function on line 110 so that the browser will load the local storage of the user
-mistakeHistory()
-
-
-//the logic for generating the dropdown buttons for date of birth and capturing the user data
-//still need to run through checker to see if over 21 or not to proceed or stop  - TP
-var currentYear = dayjs().year();
-console.log(currentYear)
-
-$(document).ready(function(){
-  // Populate day dropdown
-  for (var i = 1; i <= 31; i++) {
-    $('#dayDropdown').append('<option value="' + i + '">' + i + '</option>');
-  }
-
-  // Populate month dropdown
-  var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  for (var i = 0; i < months.length; i++) {
-    $('#monthDropdown').append('<option value="' + (i + 1) + '">' + months[i] + '</option>');
-  }
-
-  // Populate year dropdown (adjust the range as needed)
-  for (var i = currentYear; i >= currentYear - 100; i--) {
-    $('#yearDropdown').append('<option value="' + i + '">' + i + '</option>');
-  }
 });
 
-// Function to handle form submission of birthday
-function submitForm() {
-  var birthDay = $('#dayDropdown').val();
-  var birthMonth = $('#monthDropdown').val();
-  var birthYear = $('#yearDropdown').val();
-}
+//calls the mistake history function on line 110 so that the browser will load the local storage of the user
+mistakeHistory();
