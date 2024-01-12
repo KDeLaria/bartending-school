@@ -184,6 +184,7 @@ async function getDrink(drinkId) {
       drinkObject.ingredients = ingredients;
       drinkObject.measurements = measurements;
     });
+  $("#drink-name").text(drinkObject.drinkName);
   $("#drink-image").attr("src", drinkObject.thumbnail);
   generateIngredients(drinkObject);
 }
