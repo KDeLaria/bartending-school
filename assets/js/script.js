@@ -6,76 +6,76 @@ const drinkList = [
 ];
 
 var extraIngredients = [
-   "gin",
-   "vodka",
-   "cognac",
-   "white rum",
-   "bourbon",
-   "tequila",
-   "scotch",
-   "rye",
-   "mezcal",
-   "cachaca",
-   "absinthe",
-   "maraschino liqueur",
-   "elderflower liqueuer",
-   "grand marnier",
-   "calvados",
-   "apricot brandy",
-   "coffee liqueur",
-   "benedictine",
-   "amaretto",
-   "orange curacao",
-   "blue curacao",
-   "green chartreuse",
-   "yellow chartreuse",
-   "dry vermouth",
-   "sweet vermouth",
-   "triple sec",
-   "cointreau",
-   "campari",
-   "creme de cacao",
-   "cherry brandy",
-   "lemon juice",
-   "lime juice",
-   "orange juice",
-   "pineapple juice",
-   "grapefruit juice",
-   "apple juice",
-   "cranberry juice",
-   "angostura bitters",
-   "orange bitters",
-   "Simple syrup",
-   "egg white",
-   "club soda",
-   "grenadine",
-   "cream",
-   "champagne",
-   "mint leaves",
-   "honey syrup",
-   "ginger ale",
-   "ginger beer",
-   "lillet blanc",
-   "maple syrup",
-   "aperol",
-   "irish cream",
-   "tonic water",
-   "prosecco",
-   "drambuie",
-   "pisco",
-   "limoncello",
-   "honey",
-   "cynar",
-   "white creme de menthe",
-   "midori",
-   "sloe gin",
-   "7-up",
-   "rum",
-   "brandy",
-   "whiskey",
-   "scotch",
-   "bourbon",
-   "creme du violet",
+  "gin",
+  "vodka",
+  "cognac",
+  "white rum",
+  "bourbon",
+  "tequila",
+  "scotch",
+  "rye",
+  "mezcal",
+  "cachaca",
+  "absinthe",
+  "maraschino liqueur",
+  "elderflower liqueuer",
+  "grand marnier",
+  "calvados",
+  "apricot brandy",
+  "coffee liqueur",
+  "benedictine",
+  "amaretto",
+  "orange curacao",
+  "blue curacao",
+  "green chartreuse",
+  "yellow chartreuse",
+  "dry vermouth",
+  "sweet vermouth",
+  "triple sec",
+  "cointreau",
+  "campari",
+  "creme de cacao",
+  "cherry brandy",
+  "lemon juice",
+  "lime juice",
+  "orange juice",
+  "pineapple juice",
+  "grapefruit juice",
+  "apple juice",
+  "cranberry juice",
+  "angostura bitters",
+  "orange bitters",
+  "simple syrup",
+  "egg white",
+  "club soda",
+  "grenadine",
+  "cream",
+  "champagne",
+  "mint leaves",
+  "honey syrup",
+  "ginger ale",
+  "ginger beer",
+  "lillet blanc",
+  "maple syrup",
+  "aperol",
+  "irish cream",
+  "tonic water",
+  "prosecco",
+  "drambuie",
+  "pisco",
+  "limoncello",
+  "honey",
+  "cynar",
+  "white creme de menthe",
+  "midori",
+  "sloe gin",
+  "7-up",
+  "rum",
+  "brandy",
+  "whiskey",
+  "scotch",
+  "bourbon",
+  "creme du violet",
 ];
 
 // defining variables for the API data
@@ -108,11 +108,10 @@ const getDrinkButton = $("#getDrink");
 
 // event listener for the getDrink button, which generates a random drink ID and fetches the drink info from the API
 getDrinkButton.on("click", async function (e) {
-   $("#btnDiv").removeClass("d-none")
-   selectRandomDrink();
-   const drink = await getDrink(drinkId);
-   generateIngredients(drink);
-   console.log(drink.ingredients.length)
+  $("#btnDiv").removeClass("d-none");
+  selectRandomDrink();
+  const drink = await getDrink(drinkId);
+  generateIngredients(drink);
 });
 
 // generate a random drinkId from the above array
@@ -210,22 +209,35 @@ function generateIngredients(drinkObject) {
 
 // JP Render the current ingredients on the page
 function renderIngredients(currentIngredients) {
-   clearIngredients();
-   const currentIngredientsEl = $("#ingredients");
+  clearIngredients();
+  currentIngredients = currentIngredients.sort();
+  const currentIngredientsEl = $("#ingredients");
 
-   const ingredientsListEl = $("<ul>");
-   currentIngredientsEl.append(ingredientsListEl);
+  const ingredientsListEl = $("<div>");
+  ingredientsListEl.addClass("container-fluid py-2 my-1 border border-dark text-left");
+  currentIngredientsEl.append(ingredientsListEl);
 
-   if (ingredientsListEl) {
-      ingredientsListEl.html("");
-   }
+  const ingredientRowEl = $("<div>");
+  ingredientRowEl.addClass("row row-cols-2 row-cols-md-3");
+  ingredientsListEl.append(ingredientRowEl);
 
-   for (i = 0; i < currentIngredients.length; i++) {
-      let ingredientEl = $("<li>");
-      ingredientEl.attr("id", "ingredient" + i);
-      ingredientEl.text(currentIngredients[i]);
-      ingredientsListEl.append(ingredientEl);
-   }
+  for (i = 0; i < currentIngredients.length; i++) {
+    const ingredientColumnEl = $("<div>");
+    ingredientColumnEl.addClass("col");
+    ingredientRowEl.append(ingredientColumnEl);
+
+    let ingredientCheckbox = $("<input>");
+    ingredientCheckbox.addClass("form-check-input me-1" + " ingredient" + i);
+    ingredientCheckbox.attr("type", "checkbox");
+    ingredientCheckbox.attr("id", "flexCheckDefault");
+    ingredientColumnEl.append(ingredientCheckbox);
+
+    let ingredientCheckboxLabel = $("<label>");
+    ingredientCheckboxLabel.addClass("form-check-label" + " ingredient" + i);
+    ingredientCheckboxLabel.attr("for", "flexCheckDefault");
+    ingredientCheckboxLabel.text(currentIngredients[i]);
+    ingredientColumnEl.append(ingredientCheckboxLabel);
+  }
 
    // PJM Update the text displayed in the hint modal for how many ingredients in drink
    var hintEl = $("#hintText");
@@ -252,10 +264,10 @@ function clearIngredients() {
 //rb2277
 //Function that sets the text content of the page to the drinks, and persits upon refresh.
 function mistakeHistory() {
-   for (let i = 1; i <= 5; i++) {
-      let currentMistake = localStorage.getItem("Mistake Drink " + i);
-      $("#mistake" + i).text(currentMistake);
-   }
+  for (let i = 1; i <= 5; i++) {
+    let currentMistake = localStorage.getItem("Mistake Drink " + i);
+    $("#mistake" + i).text(currentMistake);
+  }
 }
 
 //jquery call to the give up button
@@ -309,4 +321,4 @@ mixItBtn.on("click", function () {
 
 
 //calls the mistake history function on line 110 so that the browser will load the local storage of the user
-mistakeHistory()
+mistakeHistory();
