@@ -91,12 +91,25 @@ getDrink(drinkId)
     $('#glass').text(drinkObject.glass);
     $('#instructions').text(drinkObject.instructions);
     $('#thumbnail').attr("src",drinkObject.thumbnail);  
-    $('#step1').text(drinkObject.measurements[0] + drinkObject.ingredients[0]);
-    $('#step2').text(drinkObject.measurements[1] + drinkObject.ingredients[1]);
-    $('#step3').text(drinkObject.measurements[2] || '' + drinkObject.ingredients[2] || '' );
-    $('#step4').text(drinkObject.measurements[3] + drinkObject.ingredients[3] || '');
-    $('#step5').text(drinkObject.measurements[4] + drinkObject.ingredients[4] || '');
-    $('#step6').text(drinkObject.measurements[5] + drinkObject.ingredients[5] || '');
+    
+  for (let i = 0; i < drinkObject.measurements.length; i++) {   
+    // Check if ingredient is not null
+    if (drinkObject.ingredients[i] !== null) {
+        // Update the corresponding field text
+        $('#step' + i).text((drinkObject.measurements[i] || '') + drinkObject.ingredients[i]);
+    } else {
+        // If ingredient is null, break out of the loop
+        break;
+    }
+}
+
+
+//     $('#step0').text(drinkObject.measurements[0] + drinkObject.ingredients[0] );
+//     $('#step1').text(drinkObject.measurements[1] + drinkObject.ingredients[1] );
+//     $('#step2').text(drinkObject.measurements[2] + drinkObject.ingredients[2] );
+//     $('#step3').text(drinkObject.measurements[3] + drinkObject.ingredients[3] );
+//     $('#step4').text(drinkObject.measurements[4] + drinkObject.ingredients[4] );
+//     $('#step5').text(drinkObject.measurements[5] + drinkObject.ingredients[5] );
     
 
 }
