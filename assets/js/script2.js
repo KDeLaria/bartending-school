@@ -92,22 +92,22 @@ async function getDrink(drinkId) {
     console.log(drinkObject);
   }
     
+getDrink(drinkId)
 
   function generateIngredients(drinkObject) {
     // Populate Recipe Card on recipe.html
+console.log(drinkObject.ingredients[1])
+    
     $('#drink-name').text(drinkObject.drinkName);
-    $('#glass').text(`Use a ${drinkObject.glass} glass`);
-    $('#instructions').text(`${drinkObject.instructions}`);
-    $('#thumbnail').attr("src",`${drinkObject.thumbnail}`);  
-    $('#step1').text(`Pour ${drinkObject.measurments[0]} of ${drinkObject.ingredients[0]}`);
-    $('#step2').text(`Use a ${drinkObject.glass} glass`);
-    $('#step3').text(`Use a ${drinkObject.glass} glass`);
-    $('#step4').text(`Use a ${drinkObject.glass} glass`);
-    $('#glass').text(`Use a ${drinkObject.glass} glass`);
-    $('#glass').text(`Use a ${drinkObject.glass} glass`);
-    $('#glass').text(`Use a ${drinkObject.glass} glass`);
-    $('#glass').text(`Use a ${drinkObject.glass} glass`);
+    $('#glass').text(drinkObject.glass);
+    $('#instructions').text(drinkObject.instructions);
+    $('#thumbnail').attr("src",drinkObject.thumbnail);  
+    $('#step1').text(drinkObject.measurements[0] + drinkObject.ingredients[0]);
+    $('#step2').text(drinkObject.measurements[1] + drinkObject.ingredients[1]);
+    $('#step3').text(drinkObject.measurements[2] + drinkObject.ingredients[2]);
+    $('#step4').text(drinkObject.measurements[3] + drinkObject.ingredients[3]);
+    $('#step5').text(drinkObject.measurements[4] + drinkObject.ingredients[4]);
+    $('#step6').text(drinkObject.measurements[5] + drinkObject.ingredients[5]);
+    
+
 }
-
-
-
