@@ -1,8 +1,8 @@
 // list of drink IDs
 const drinkList = [
-  11728, 17827, 17186, 17250, 17180, 11324, 11003, 15941, 17185, 17218, 11423,
-  12101, 13621, 11002, 11006, 178317, 11008, 17251, 17247, 11720, 11001, 12127,
-  12196, 11202, 17196, 13751, 11000, 17252, 11410, 12528,
+   11728, 17827, 17186, 17250, 17180, 11324, 11003, 15941, 17185, 17218, 11423,
+   12101, 13621, 11002, 11006, 178317, 11008, 17251, 17247, 11720, 11001, 12127,
+   12196, 11202, 17196, 13751, 11000, 17252, 11410, 12528,
 ];
 
 var extraIngredients = [
@@ -87,19 +87,21 @@ var thumbnail;
 var ingredients = [];
 var measurements = [];
 var drinkObject = {
-  drinkName,
-  instructions,
-  glass,
-  thumbnail,
-  ingredients,
-  measurements,
+   drinkName,
+   instructions,
+   glass,
+   thumbnail,
+   ingredients,
+   measurements,
 };
+var changeGiveUp = false;
 
 //Function to generate random numbers
 function random(min, max) {
-  const num = Math.floor(Math.random() * (max - min)) + min;
-  return num;
+   const num = Math.floor(Math.random() * (max - min)) + min;
+   return num;
 }
+
 
 // defining variable for the getDrink button
 const getDrinkButton = $("#getDrink");
@@ -114,95 +116,95 @@ getDrinkButton.on("click", async function (e) {
 
 // generate a random drinkId from the above array
 function selectRandomDrink() {
-  const drinkIndex = random(0, drinkList.length);
-  drinkId = drinkList[drinkIndex];
+   const drinkIndex = random(0, drinkList.length);
+   drinkId = drinkList[drinkIndex];
 }
 
 // fetch the drink info from the API using the generated drink ID
 async function getDrink(drinkId) {
-  var drinkUrl =
-    "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId;
+   var drinkUrl =
+      "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId;
 
-  await fetch(drinkUrl)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      drinkName = data.drinks[0].strDrink;
-      instructions = data.drinks[0].strInstructions;
-      glass = data.drinks[0].strGlass;
-      thumbnail = data.drinks[0].strDrinkThumb;
-      ingredients = [
-        data.drinks[0].strIngredient1,
-        data.drinks[0].strIngredient2,
-        data.drinks[0].strIngredient3,
-        data.drinks[0].strIngredient4,
-        data.drinks[0].strIngredient5,
-        data.drinks[0].strIngredient6,
-        data.drinks[0].strIngredient7,
-        data.drinks[0].strIngredient8,
-        data.drinks[0].strIngredient9,
-        data.drinks[0].strIngredient10,
-        data.drinks[0].strIngredient11,
-        data.drinks[0].strIngredient12,
-        data.drinks[0].strIngredient13,
-        data.drinks[0].strIngredient14,
-        data.drinks[0].strIngredient15,
-      ];
-      ingredients = ingredients.splice(0, ingredients.indexOf(null));
-      measurements = [
-        data.drinks[0].strMeasure1,
-        data.drinks[0].strMeasure2,
-        data.drinks[0].strMeasure3,
-        data.drinks[0].strMeasure4,
-        data.drinks[0].strMeasure5,
-        data.drinks[0].strMeasure6,
-        data.drinks[0].strMeasure7,
-        data.drinks[0].strMeasure8,
-        data.drinks[0].strMeasure9,
-        data.drinks[0].strMeasure10,
-        data.drinks[0].strMeasure11,
-        data.drinks[0].strMeasure12,
-        data.drinks[0].strMeasure13,
-        data.drinks[0].strMeasure14,
-        data.drinks[0].strMeasure15,
-      ];
-      measurements = measurements.splice(0, measurements.indexOf(null));
+   await fetch(drinkUrl)
+      .then(function (response) {
+         return response.json();
+      })
+      .then(function (data) {
+         drinkName = data.drinks[0].strDrink;
+         instructions = data.drinks[0].strInstructions;
+         glass = data.drinks[0].strGlass;
+         thumbnail = data.drinks[0].strDrinkThumb;
+         ingredients = [
+            data.drinks[0].strIngredient1,
+            data.drinks[0].strIngredient2,
+            data.drinks[0].strIngredient3,
+            data.drinks[0].strIngredient4,
+            data.drinks[0].strIngredient5,
+            data.drinks[0].strIngredient6,
+            data.drinks[0].strIngredient7,
+            data.drinks[0].strIngredient8,
+            data.drinks[0].strIngredient9,
+            data.drinks[0].strIngredient10,
+            data.drinks[0].strIngredient11,
+            data.drinks[0].strIngredient12,
+            data.drinks[0].strIngredient13,
+            data.drinks[0].strIngredient14,
+            data.drinks[0].strIngredient15,
+         ];
+         ingredients = ingredients.splice(0, ingredients.indexOf(null));
+         measurements = [
+            data.drinks[0].strMeasure1,
+            data.drinks[0].strMeasure2,
+            data.drinks[0].strMeasure3,
+            data.drinks[0].strMeasure4,
+            data.drinks[0].strMeasure5,
+            data.drinks[0].strMeasure6,
+            data.drinks[0].strMeasure7,
+            data.drinks[0].strMeasure8,
+            data.drinks[0].strMeasure9,
+            data.drinks[0].strMeasure10,
+            data.drinks[0].strMeasure11,
+            data.drinks[0].strMeasure12,
+            data.drinks[0].strMeasure13,
+            data.drinks[0].strMeasure14,
+            data.drinks[0].strMeasure15,
+         ];
+         measurements = measurements.splice(0, measurements.indexOf(null));
 
-      // assign the variables to the drinkObject
-      drinkObject.drinkName = drinkName;
-      drinkObject.instructions = instructions;
-      drinkObject.glass = glass;
-      drinkObject.thumbnail = thumbnail;
-      drinkObject.ingredients = ingredients;
-      drinkObject.measurements = measurements;
-    });
-  $("#drink-name").text(drinkObject.drinkName);
-  $("#drink-image").attr("src", drinkObject.thumbnail);
-  return drinkObject;
+         // assign the variables to the drinkObject
+         drinkObject.drinkName = drinkName;
+         drinkObject.instructions = instructions;
+         drinkObject.glass = glass;
+         drinkObject.thumbnail = thumbnail;
+         drinkObject.ingredients = ingredients;
+         drinkObject.measurements = measurements;
+      });
+   $("#drink-name").text(drinkObject.drinkName);
+   $("#drink-image").attr("src", drinkObject.thumbnail);
+   return drinkObject;
 }
 
 // JP Collect the current ingredients and add the necessary amount of extra ingredients to reach 15 total
 function generateIngredients(drinkObject) {
-  var correctIngredients = drinkObject.ingredients;
-  var currentIngredients = [];
+   var correctIngredients = drinkObject.ingredients;
+   var currentIngredients = [];
 
-  for (i = 0; i < correctIngredients.length; i++) {
-    correctIngredients[i] = correctIngredients[i].toLowerCase();
-    currentIngredients.push(correctIngredients[i]);
-  }
+   for (i = 0; i < correctIngredients.length; i++) {
+      correctIngredients[i] = correctIngredients[i].toLowerCase();
+      currentIngredients.push(correctIngredients[i]);
+   }
 
-  for (i = currentIngredients.length; i < 15; i++) {
-    var extraIngredientIndex = random(0, extraIngredients.length);
-    var randomIngredient = extraIngredients[extraIngredientIndex];
+   for (i = currentIngredients.length; i < 15; i++) {
+      var extraIngredientIndex = random(0, extraIngredients.length);
+      var randomIngredient = extraIngredients[extraIngredientIndex];
 
-    if (currentIngredients.indexOf(randomIngredient) === -1) {
-      currentIngredients.push(randomIngredient);
-    } else {
-      i--;
-    }
-  }
-  renderIngredients(currentIngredients);
+      if (currentIngredients.indexOf(randomIngredient) === -1) {
+         currentIngredients.push(randomIngredient);
+      } else {
+         i--;
+      }
+   }
+   renderIngredients(currentIngredients);
 }
 
 // JP Render the current ingredients on the page
@@ -237,26 +239,26 @@ function renderIngredients(currentIngredients) {
     ingredientColumnEl.append(ingredientCheckboxLabel);
   }
 
-  // PJM Update the text displayed in the hint modal for how many ingredients in drink
-  var hintEl = $("#hintText");
+   // PJM Update the text displayed in the hint modal for how many ingredients in drink
+   var hintEl = $("#hintText");
 
-  hintEl.append(
-    "<p>There are " +
+   hintEl.append(
+      "<p>There are " +
       drinkObject.ingredients.length +
       " ingredients you need to select.</p>"
-  );
+   );
 }
 
 function clearIngredients() {
-  const currentIngredientsEl = $("#ingredients");
-  if (currentIngredientsEl) {
-    currentIngredientsEl.html("");
-  }
+   const currentIngredientsEl = $("#ingredients");
+   if (currentIngredientsEl) {
+      currentIngredientsEl.html("");
+   }
 
-  const hintEl = $("#hintText");
-  if (hintEl) {
-    hintEl.html("");
-  }
+   const hintEl = $("#hintText");
+   if (hintEl) {
+      hintEl.html("");
+   }
 }
 
 //rb2277
@@ -269,25 +271,54 @@ function mistakeHistory() {
 }
 
 //jquery call to the give up button
-let giveUp = $("#giveUpBtn");
+// let giveUp = $("#giveUpBtn");
 
 //event listener on clock of the give up button. It saves the current drink  name with saveDrink
-giveUp.on("click", function () {
-  let saveDrink = drinkObject.drinkName;
+$("#giveUpBtn").on('click', function () {
+   if (!changeGiveUp) {
+      let saveDrink = drinkObject.drinkName;
+      //Will shift all previous drinks down 1 position, and add the latest drink to the top
+      for (let i = 4; i >= 1; i--) {
+         let recentMistake = localStorage.getItem("Mistake Drink " + i);
+         if (recentMistake != null) {
+            localStorage.setItem("Mistake Drink " + (i + 1), recentMistake);
+         }
+      }
+   localStorage.setItem("Mistake Drink 1", saveDrink);
 
-  //Will shift all previous drinks down 1 position, and add the latest drink to the top
-  for (let i = 4; i >= 1; i--) {
-    let recentMistake = localStorage.getItem("Mistake Drink " + i);
-    if (recentMistake != null) {
-      localStorage.setItem("Mistake Drink " + (i + 1), recentMistake);
-    }
-  }
+   //calls the makeHistory function at the end of the click listener so that it can update the content of the page.
+   mistakeHistory();
 
-  localStorage.setItem("Mistake Drink 1", saveDrink);
+}else {
+   makeCard();
+}}
+)
 
-  //calls the makeHistory function at the end of the click listener so that it can update the content of the page.
-  mistakeHistory();
+// Calling this function will go to the new page
+function makeCard() {
+   window.location = "./recipe.html"
+}
+
+
+let mixItBtn = $("#mix-it");
+mixItBtn.on("click", function () {
+   console.log("You just clicked on the Mix It button");
+   // Make a sound when hitting the button
+   // $("#dropping-ice").play();
+   // Determine if the user has selected the correct items
+
+
+   // Put things to do here when the user guesses the correct drink.
+
+
+   // Change the "give up" button to a "Make a card" button when the user answer correctly
+   console.log("Time to change the Give Up button");
+   var giveUpEl = $("#giveUpBtn");
+   giveUpEl.text("Make a drink card");
+   changeGiveUp = true;
+
 });
+
 
 //calls the mistake history function on line 110 so that the browser will load the local storage of the user
 mistakeHistory();
