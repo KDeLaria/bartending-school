@@ -149,7 +149,8 @@ async function getDrink(drinkId) {
         data.drinks[0].strIngredient14,
         data.drinks[0].strIngredient15,
       ];
-      ingredients = ingredients.splice(0, ingredients.indexOf(null));
+      ingredients = ingredients.splice(0, ingredients.indexOf(null)).sort();
+      console.log(ingredients);
       measurements = [
         data.drinks[0].strMeasure1,
         data.drinks[0].strMeasure2,
@@ -227,6 +228,7 @@ function renderIngredients(currentIngredients) {
     let ingredientCheckbox = $("<input>");
     ingredientCheckbox.addClass("form-check-input me-1" + " ingredient" + i);
     ingredientCheckbox.attr("type", "checkbox");
+    ingredientCheckbox.attr("value", currentIngredients[i]);
     ingredientCheckbox.attr("id", "flexCheckDefault");
     ingredientColumnEl.append(ingredientCheckbox);
 
@@ -256,6 +258,38 @@ function clearIngredients() {
   const hintEl = $("#hintText");
   if (hintEl) {
     hintEl.html("");
+  }
+}
+
+const mixItButton = $("#mixIt");
+
+mixItButton.on("click", function(e) {
+  evaluateSelections();
+});
+
+function evaluateSelections() {
+  const checkboxes = document.querySelectorAll(".form-check-input");
+  let selectedIngredients = [];
+  let correctIngredients = drinkObject.ingredients;
+  let isCorrect;
+  
+  for (i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      selectedIngredients.push(checkboxes[i].value);
+    }
+  }
+  selectedIngredients = selectedIngredients.sort();
+
+  if (selectedIngredients.length !== correctIngredients.length) {
+    isCorrect = false;
+  }
+  else {
+    for (var i =0; i < selectedIngredients.length; i++) {
+      if (selectedIngredients[i] !== correctIngredients[i]) {
+        isCorrect = false;
+      }
+      else isCorrect = true;
+    }
   }
 }
 
