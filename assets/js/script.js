@@ -184,7 +184,7 @@ async function getDrink(drinkId) {
       drinkObject.ingredients = ingredients;
       drinkObject.measurements = measurements;
     });
-  $("#drink-name").text(drinkObject.drinkName);
+  $("#drink-name").text(drinkObject.drinkName);//KD
   $("#drink-image").attr("src", drinkObject.thumbnail);
   generateIngredients(drinkObject);
 }
@@ -243,3 +243,8 @@ giveUp.on('click', function() {
 
 //calls the mistake history function on line 110 so that the browser will load the local storage of the user
 mistakeHistory()
+// KD
+$("#mix-it").on("click", mixDrink); 
+function mixDrink () {
+  $("#dropping-ice").play();
+}
