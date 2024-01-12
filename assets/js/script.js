@@ -45,7 +45,7 @@ var extraIngredients = [
   "cranberry juice",
   "angostura bitters",
   "orange bitters",
-  "Simple syrup",
+  "simple syrup",
   "egg white",
   "club soda",
   "grenadine",
@@ -106,11 +106,10 @@ const getDrinkButton = $("#getDrink");
 
 // event listener for the getDrink button, which generates a random drink ID and fetches the drink info from the API
 getDrinkButton.on("click", async function (e) {
-  $("#btnDiv").removeClass("d-none")
+  $("#btnDiv").removeClass("d-none");
   selectRandomDrink();
   const drink = await getDrink(drinkId);
   generateIngredients(drink);
-  console.log(drink.ingredients.length)
 });
 
 // generate a random drinkId from the above array
@@ -209,20 +208,33 @@ function generateIngredients(drinkObject) {
 // JP Render the current ingredients on the page
 function renderIngredients(currentIngredients) {
   clearIngredients();
+  currentIngredients = currentIngredients.sort();
   const currentIngredientsEl = $("#ingredients");
 
-  const ingredientsListEl = $("<ul>");
+  const ingredientsListEl = $("<div>");
+  ingredientsListEl.addClass("container-fluid py-2 my-1 border border-dark text-center");
   currentIngredientsEl.append(ingredientsListEl);
 
-  if (ingredientsListEl) {
-    ingredientsListEl.html("");
-  }
+  const ingredientRowEl = $("<div>");
+  ingredientRowEl.addClass("row");
+  ingredientsListEl.append(ingredientRowEl);
 
   for (i = 0; i < currentIngredients.length; i++) {
-    let ingredientEl = $("<li>");
-    ingredientEl.attr("id", "ingredient" + i);
-    ingredientEl.text(currentIngredients[i]);
-    ingredientsListEl.append(ingredientEl);
+    const ingredientColumnEl = $("<div>");
+    ingredientColumnEl.addClass("col-auto");
+    ingredientRowEl.append(ingredientColumnEl);
+
+    let ingredientCheckbox = $("<input>");
+    ingredientCheckbox.addClass("form-check-input me-1" + " ingredient" + i);
+    ingredientCheckbox.attr("type", "checkbox");
+    ingredientCheckbox.attr("id", "flexCheckDefault");
+    ingredientColumnEl.append(ingredientCheckbox);
+
+    let ingredientCheckboxLabel = $("<label>");
+    ingredientCheckboxLabel.addClass("form-check-label me-2" + " ingredient" + i);
+    ingredientCheckboxLabel.attr("for", "flexCheckDefault");
+    ingredientCheckboxLabel.text(currentIngredients[i]);
+    ingredientColumnEl.append(ingredientCheckboxLabel);
   }
 
   // PJM Update the text displayed in the hint modal for how many ingredients in drink
@@ -250,33 +262,32 @@ function clearIngredients() {
 //rb2277
 //Function that sets the text content of the page to the drinks, and persits upon refresh.
 function mistakeHistory() {
-  for(let i = 1; i <= 5; i++) {
+  for (let i = 1; i <= 5; i++) {
     let currentMistake = localStorage.getItem("Mistake Drink " + i);
-      $("#mistake" + i).text(currentMistake);
+    $("#mistake" + i).text(currentMistake);
   }
-  }
+}
 
 //jquery call to the give up button
 let giveUp = $("#giveUpBtn");
 
 //event listener on clock of the give up button. It saves the current drink  name with saveDrink
-giveUp.on('click', function() {
+giveUp.on("click", function () {
   let saveDrink = drinkObject.drinkName;
 
-//Will shift all previous drinks down 1 position, and add the latest drink to the top
-  for(let i = 4; i >= 1; i--) {
+  //Will shift all previous drinks down 1 position, and add the latest drink to the top
+  for (let i = 4; i >= 1; i--) {
     let recentMistake = localStorage.getItem("Mistake Drink " + i);
-    if(recentMistake != null) {
-    localStorage.setItem("Mistake Drink " + (i + 1), recentMistake);
-}
-}
-
+    if (recentMistake != null) {
+      localStorage.setItem("Mistake Drink " + (i + 1), recentMistake);
+    }
+  }
 
   localStorage.setItem("Mistake Drink 1", saveDrink);
 
   //calls the makeHistory function at the end of the click listener so that it can update the content of the page.
   mistakeHistory();
-})
+});
 
 //calls the mistake history function on line 110 so that the browser will load the local storage of the user
-mistakeHistory()
+mistakeHistory();
