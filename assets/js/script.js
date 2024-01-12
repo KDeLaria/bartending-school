@@ -106,6 +106,7 @@ const getDrinkButton = $("#getDrink");
 
 // event listener for the getDrink button, which generates a random drink ID and fetches the drink info from the API
 getDrinkButton.on("click", async function (e) {
+  $("#btnDiv").removeClass("d-none")
   selectRandomDrink();
   const drink = await getDrink(drinkId);
   generateIngredients(drink);
@@ -177,6 +178,7 @@ async function getDrink(drinkId) {
       drinkObject.ingredients = ingredients;
       drinkObject.measurements = measurements;
     });
+  $("#drink-name").text(drinkObject.drinkName);
   $("#drink-image").attr("src", drinkObject.thumbnail);
   return drinkObject;
 }
