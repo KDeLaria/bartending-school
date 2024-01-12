@@ -1,3 +1,9 @@
+//launch static background age verification modal upon page load - TP
+document.addEventListener('DOMContentLoaded', function () {
+  var ageVerify = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+  ageVerify.show();
+});
+
 // list of drink IDs
 const drinkList = [
   11728, 17827, 17186, 17250, 17180, 11324, 11003, 15941, 17185, 17218, 11423,
@@ -280,3 +286,34 @@ giveUp.on('click', function() {
 
 //calls the mistake history function on line 110 so that the browser will load the local storage of the user
 mistakeHistory()
+
+
+//the logic for generating the dropdown buttons for date of birth and capturing the user data
+//still need to run through checker to see if over 21 or not to proceed or stop  - TP
+var currentYear = dayjs().year();
+console.log(currentYear)
+
+$(document).ready(function(){
+  // Populate day dropdown
+  for (var i = 1; i <= 31; i++) {
+    $('#dayDropdown').append('<option value="' + i + '">' + i + '</option>');
+  }
+
+  // Populate month dropdown
+  var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  for (var i = 0; i < months.length; i++) {
+    $('#monthDropdown').append('<option value="' + (i + 1) + '">' + months[i] + '</option>');
+  }
+
+  // Populate year dropdown (adjust the range as needed)
+  for (var i = currentYear; i >= currentYear - 100; i--) {
+    $('#yearDropdown').append('<option value="' + i + '">' + i + '</option>');
+  }
+});
+
+// Function to handle form submission of birthday
+function submitForm() {
+  var birthDay = $('#dayDropdown').val();
+  var birthMonth = $('#monthDropdown').val();
+  var birthYear = $('#yearDropdown').val();
+}
