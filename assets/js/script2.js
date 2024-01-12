@@ -111,3 +111,15 @@ console.log(drinkObject.ingredients[1])
     
 
 }
+
+window.onload = function () {
+  document.getElementById('downloadPdf').addEventListener('click', function () {
+      generatePdf();
+  });
+};
+
+function generatePdf() {
+  var element = document.querySelector('.container');
+  html2pdf(element);
+}
+
