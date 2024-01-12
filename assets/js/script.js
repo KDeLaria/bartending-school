@@ -1,5 +1,3 @@
-var hintEl = $("#hintText");
-
 // list of drink IDs
 const drinkList = [
   11728, 17827, 17186, 17250, 17180, 11324, 11003, 15941, 17185, 17218, 11423,
@@ -107,16 +105,12 @@ function random(min, max) {
 const getDrinkButton = $("#getDrink");
 
 // event listener for the getDrink button, which generates a random drink ID and fetches the drink info from the API
-getDrinkButton.on("click", function (e) {
+getDrinkButton.on("click", async function (e) {
   $("#btnDiv").removeClass("d-none")
   selectRandomDrink();
-  getDrink(drinkId);
-  // PJM Update the text displayed in the hint modal for how many ingredients in drink
-  hintEl.append(
-    "<p>There are " +
-      ingredients.length +
-      " ingredients you need to select.</p>"
-  );
+  const drink = await getDrink(drinkId);
+  generateIngredients(drink);
+  console.log(drink.ingredients.length)
 });
 
 // generate a random drinkId from the above array
@@ -186,9 +180,10 @@ async function getDrink(drinkId) {
     });
   $("#drink-name").text(drinkObject.drinkName);
   $("#drink-image").attr("src", drinkObject.thumbnail);
-  generateIngredients(drinkObject);
+  return drinkObject;
 }
 
+// JP Collect the current ingredients and add the necessary amount of extra ingredients to reach 15 total
 function generateIngredients(drinkObject) {
   var correctIngredients = drinkObject.ingredients;
   var currentIngredients = [];
@@ -207,6 +202,48 @@ function generateIngredients(drinkObject) {
     } else {
       i--;
     }
+  }
+  renderIngredients(currentIngredients);
+}
+
+// JP Render the current ingredients on the page
+function renderIngredients(currentIngredients) {
+  clearIngredients();
+  const currentIngredientsEl = $("#ingredients");
+
+  const ingredientsListEl = $("<ul>");
+  currentIngredientsEl.append(ingredientsListEl);
+
+  if (ingredientsListEl) {
+    ingredientsListEl.html("");
+  }
+
+  for (i = 0; i < currentIngredients.length; i++) {
+    let ingredientEl = $("<li>");
+    ingredientEl.attr("id", "ingredient" + i);
+    ingredientEl.text(currentIngredients[i]);
+    ingredientsListEl.append(ingredientEl);
+  }
+
+  // PJM Update the text displayed in the hint modal for how many ingredients in drink
+  var hintEl = $("#hintText");
+
+  hintEl.append(
+    "<p>There are " +
+      drinkObject.ingredients.length +
+      " ingredients you need to select.</p>"
+  );
+}
+
+function clearIngredients() {
+  const currentIngredientsEl = $("#ingredients");
+  if (currentIngredientsEl) {
+    currentIngredientsEl.html("");
+  }
+
+  const hintEl = $("#hintText");
+  if (hintEl) {
+    hintEl.html("");
   }
 }
 
