@@ -1,10 +1,4 @@
-//Do this as seperate page js or integrate into original
-
-//listener for clicks on either Make a Recipe Card or Give Up or 
-
-//pull in drink ID from URL
-//re-run api  We need to do this because it's being directed here three different ways:
-//recall
+//Need to figure out what to do with more ingredients than measure.  Hide non-populated blocks.
 var drinkName;
 var instructions;
 var glass;
@@ -87,16 +81,11 @@ async function getDrink(drinkId) {
       });
       generateIngredients(drinkObject);
   }
-  
-  function generateIngredients(drinkObject) {
-    console.log(drinkObject);
-  }
-    
+   
 getDrink(drinkId)
 
   function generateIngredients(drinkObject) {
-    // Populate Recipe Card on recipe.html
-console.log(drinkObject.ingredients[1])
+
     
     $('#drink-name').text(drinkObject.drinkName);
     $('#glass').text(drinkObject.glass);
@@ -104,10 +93,10 @@ console.log(drinkObject.ingredients[1])
     $('#thumbnail').attr("src",drinkObject.thumbnail);  
     $('#step1').text(drinkObject.measurements[0] + drinkObject.ingredients[0]);
     $('#step2').text(drinkObject.measurements[1] + drinkObject.ingredients[1]);
-    $('#step3').text(drinkObject.measurements[2] + drinkObject.ingredients[2]);
-    $('#step4').text(drinkObject.measurements[3] + drinkObject.ingredients[3]);
-    $('#step5').text(drinkObject.measurements[4] + drinkObject.ingredients[4]);
-    $('#step6').text(drinkObject.measurements[5] + drinkObject.ingredients[5]);
+    $('#step3').text(drinkObject.measurements[2] || '' + drinkObject.ingredients[2] || '' );
+    $('#step4').text(drinkObject.measurements[3] + drinkObject.ingredients[3] || '');
+    $('#step5').text(drinkObject.measurements[4] + drinkObject.ingredients[4] || '');
+    $('#step6').text(drinkObject.measurements[5] + drinkObject.ingredients[5] || '');
     
 
 }
