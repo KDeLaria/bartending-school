@@ -1,10 +1,4 @@
-//Do this as seperate page js or integrate into original
-
-//listener for clicks on either Make a Recipe Card or Give Up or 
-
-//pull in drink ID from URL
-//re-run api  We need to do this because it's being directed here three different ways:
-//recall
+//Need to figure out what to do with more ingredients than measure.  Hide non-populated blocks.
 var drinkName;
 var instructions;
 var glass;
@@ -87,27 +81,31 @@ async function getDrink(drinkId) {
       });
       generateIngredients(drinkObject);
   }
-  
-  function generateIngredients(drinkObject) {
-    console.log(drinkObject);
-  }
-    
+   
+getDrink(drinkId)
+
 
   function generateIngredients(drinkObject) {
-    // Populate Recipe Card on recipe.html
+
+    
     $('#drink-name').text(drinkObject.drinkName);
-    $('#glass').text(`Use a ${drinkObject.glass} glass`);
-    $('#instructions').text(`${drinkObject.instructions}`);
-    $('#thumbnail').attr("src",`${drinkObject.thumbnail}`);  
-    $('#step1').text(`Pour ${drinkObject.measurments[0]} of ${drinkObject.ingredients[0]}`);
-    $('#step2').text(`Use a ${drinkObject.glass} glass`);
-    $('#step3').text(`Use a ${drinkObject.glass} glass`);
-    $('#step4').text(`Use a ${drinkObject.glass} glass`);
-    $('#glass').text(`Use a ${drinkObject.glass} glass`);
-    $('#glass').text(`Use a ${drinkObject.glass} glass`);
-    $('#glass').text(`Use a ${drinkObject.glass} glass`);
-    $('#glass').text(`Use a ${drinkObject.glass} glass`);
+    $('#glass').text(drinkObject.glass);
+    $('#instructions').text(drinkObject.instructions);
+    $('#thumbnail').attr("src",drinkObject.thumbnail);  
+    
+    for (let i = 0; i < drinkObject.ingredients.length; i++) {
+          $('#step' + i).text((drinkObject.measurements[i] || '') + drinkObject.ingredients[i]);  
+  }
 }
 
+window.onload = function () {
+  document.getElementById('downloadPdf').addEventListener('click', function () {
+      generatePdf();
+  });
+};
 
+function generatePdf() {
+  var element = document.querySelector('.container');
+  html2pdf(element);
+}
 
