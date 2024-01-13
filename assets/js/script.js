@@ -361,7 +361,7 @@ function makeCard() {
 mistakeHistory();
 
 
-//Logic for 21+ checker
+//Logic for 21+ checker - TP
 var today = dayjs()
 var date21YearsAgo = today.subtract(21, 'year');
 
