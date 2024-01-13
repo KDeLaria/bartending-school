@@ -137,45 +137,46 @@ async function getDrink(drinkId) {
       return response.json();
     })
     .then(function (data) {
-      drinkName = data.drinks[0].strDrink;
-      instructions = data.drinks[0].strInstructions;
-      glass = data.drinks[0].strGlass;
-      thumbnail = data.drinks[0].strDrinkThumb;
+      drinkObject = data.drinks[0];
+      drinkName = drinkObject.strDrink;
+      instructions = drinkObject.strInstructions;
+      glass = drinkObject.strGlass;
+      thumbnail = drinkObject.strDrinkThumb;
       ingredients = [
-        data.drinks[0].strIngredient1,
-        data.drinks[0].strIngredient2,
-        data.drinks[0].strIngredient3,
-        data.drinks[0].strIngredient4,
-        data.drinks[0].strIngredient5,
-        data.drinks[0].strIngredient6,
-        data.drinks[0].strIngredient7,
-        data.drinks[0].strIngredient8,
-        data.drinks[0].strIngredient9,
-        data.drinks[0].strIngredient10,
-        data.drinks[0].strIngredient11,
-        data.drinks[0].strIngredient12,
-        data.drinks[0].strIngredient13,
-        data.drinks[0].strIngredient14,
-        data.drinks[0].strIngredient15,
+        drinkObject.strIngredient1,
+        drinkObject.strIngredient2,
+        drinkObject.strIngredient3,
+        drinkObject.strIngredient4,
+        drinkObject.strIngredient5,
+        drinkObject.strIngredient6,
+        drinkObject.strIngredient7,
+        drinkObject.strIngredient8,
+        drinkObject.strIngredient9,
+        drinkObject.strIngredient10,
+        drinkObject.strIngredient11,
+        drinkObject.strIngredient12,
+        drinkObject.strIngredient13,
+        drinkObject.strIngredient14,
+        drinkObject.strIngredient15,
       ];
       ingredients = ingredients.splice(0, ingredients.indexOf(null)).sort();
       console.log(ingredients);
       measurements = [
-        data.drinks[0].strMeasure1,
-        data.drinks[0].strMeasure2,
-        data.drinks[0].strMeasure3,
-        data.drinks[0].strMeasure4,
-        data.drinks[0].strMeasure5,
-        data.drinks[0].strMeasure6,
-        data.drinks[0].strMeasure7,
-        data.drinks[0].strMeasure8,
-        data.drinks[0].strMeasure9,
-        data.drinks[0].strMeasure10,
-        data.drinks[0].strMeasure11,
-        data.drinks[0].strMeasure12,
-        data.drinks[0].strMeasure13,
-        data.drinks[0].strMeasure14,
-        data.drinks[0].strMeasure15,
+        drinkObject.strMeasure1,
+        drinkObject.strMeasure2,
+        drinkObject.strMeasure3,
+        drinkObject.strMeasure4,
+        drinkObject.strMeasure5,
+        drinkObject.strMeasure6,
+        drinkObject.strMeasure7,
+        drinkObject.strMeasure8,
+        drinkObject.strMeasure9,
+        drinkObject.strMeasure10,
+        drinkObject.strMeasure11,
+        drinkObject.strMeasure12,
+        drinkObject.strMeasure13,
+        drinkObject.strMeasure14,
+        drinkObject.strMeasure15,
       ];
       measurements = measurements.splice(0, measurements.indexOf(null));
 
