@@ -278,6 +278,8 @@ function clearIngredients() {
 let mixItBtn = $("#mix-it");
 mixItBtn.on("click", function () {
   if (drinkObject) {
+    let mixSound = new Audio("./assets/audio/mixItSound.mp3");
+    mixSound.play();
     // Make a sound when hitting the button
     // $("#dropping-ice").play();
 
@@ -379,3 +381,4 @@ function getSelectedDate() {
 document.getElementById("submitBirthday").addEventListener("click", function() {
   getSelectedDate();
 });
+
