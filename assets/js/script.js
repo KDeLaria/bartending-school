@@ -351,8 +351,8 @@ function makeCard() {
 }
 
 
-let mixItBtn = $("#mix-it");
-mixItBtn.on("click", function () {
+
+$("#mix-it").on("click", function () {
    console.log("You just clicked on the Mix It button");
    // Make a sound when hitting the button
    let snd = new Audio("./assets/audio/martini_shake_pour-34765.mp3");
