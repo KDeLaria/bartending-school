@@ -50,7 +50,7 @@
             <!-- Button trigger modal -->
 
          <div class="row pt-5 mt-5">
-            <div class="col-md-2 mx-auto">
+            <div class="col-md-6 mx-auto">
                <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#instructionModal">Instructions</button>
             </div>
             <div class="col-md-6 mx-auto">
@@ -79,13 +79,48 @@
       </div>
                <!--This is the end of row 1 using bootstrap-->
                <!--This is the start of row 2 using bootstrap-->
-      <div class="row">
-            <div class="bg-secondary col-md-8 mt-5" id="ingredients">
+      <div class="row  align-items-end">
+         <div class="bg-secondary col-md-8 mt-5 p-5">
+      <div id="ingredients">
              </div>
 
-
-
-             
+             <div class="row ">
+               <div class="col-md-4 pt-5 mt-5">
+                  <button id="mix-it" class="btn btn-lg btn-dark">Mix it</button>
+                  <audio src="./assets/audio/martini_shake_pour-34765.mp3" id="dropping-ice" class="d-none"></audio>
+               </div>
+      
+               <div class="col-md-4 pt-5 mt-5">
+                        <!-- This is the hint button modal that is triggered upon hover-->
+                        <!-- Button trigger modal -->
+      
+                   <div class="modal fade" id="hintModal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                 <div class="modal-header">
+                                    <h5 class="modal-title">Hint</h5>
+                                 </div>
+                                 <div class="modal-body" id="hintText">
+                                    <p></p>
+                                 </div>
+                                 <div class="modal-footer">
+                                    <button type="button" class="btn btn-lg btn-dark" data-bs-dismiss="modal">Close</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#hintModal">
+                           Hint
+                        </button>
+      
+                     </div> <!-- This is the end of the hint modal -->
+      
+                     <div id="btnDiv" class="col-md-4 pt-5 mt-5">
+                        <button id="giveUpBtn" class="btn-lg btn-dark">Give up</button>
+                     </div>
+                  </div>
+         </div>  
           <div class="col-md-4 pt-4">
             <div class="bg-secondary mx-auto" id="drink-card">
                <img class="card-img-top mx-auto" id="drink-image" src="assets/images/bartender-best-carousel.png"
@@ -97,49 +132,8 @@
           </div>
       </div>
                <!--This is the end of row 2 using bootstrap-->
-
-               <!--This is the start of row 3 using bootstrap-->
-         <div class="row">
-         <div class="col-md-1">
-            <button id="mix-it" class="btn btn-lg btn-dark">Mix it</button>
-            <audio src="./assets/audio/martini_shake_pour-34765.mp3" id="dropping-ice" class="d-none"></audio>
-         </div>
-
-         <div class="col-md-1">
-                  <!-- This is the hint button modal that is triggered upon hover-->
-                  <!-- Button trigger modal -->
-
-             <div class="modal fade" id="hintModal" tabindex="-1" role="dialog">
-                  <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                           <div class="modal-header">
-                              <h5 class="modal-title">Hint</h5>
-                           </div>
-                           <div class="modal-body" id="hintText">
-                              <p></p>
-                           </div>
-                           <div class="modal-footer">
-                              <button type="button" class="btn btn-lg btn-dark" data-bs-dismiss="modal">Close</button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#hintModal">
-                     Hint
-                  </button>
-
-               </div> <!-- This is the end of the hint modal -->
-
-               <div id="btnDiv" class="col-md-3">
-                  <button id="giveUpBtn" class="btn-lg btn-dark">Give up</button>
-               </div>
-            </div>
-         </div>
-         <!--this is the end of row 3 using bootstrap-->
-
-
-         <!--this is the start of row 4 using bootstrap-->
+  
+         <!--this is the start of row 3 using bootstrap-->
 
          
  <div class="row">
@@ -203,8 +197,8 @@
             </div>
         </div>
     </div>
-
-</div>
+<!--this is the end of row 3 using bootstrap-->
+<!--this is the start of row 4 using bootstrap-->
 <footer class="container-fluid">
    <div class="row">
       <div class="col-8 text-center">
@@ -223,6 +217,7 @@
       </div>
    </div>
 </footer>
+<!--this is the end of row 4 using bootstrap-->
 
  <!-- Age Verification Modal - TP -->
  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
