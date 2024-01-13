@@ -1,3 +1,10 @@
+
+//launch static background age verification modal upon page load - TP
+document.addEventListener('DOMContentLoaded', function () {
+  var ageVerify = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+  ageVerify.show();
+});
+
 // JP array of drink IDs
 const drinkList = [
   11728, 17827, 17186, 17250, 17180, 11324, 11003, 15941, 17185, 17218, 11423,
@@ -79,7 +86,7 @@ var extraIngredients = [
   "creme du violet",
 ];
 
-// JP defining variables for the API data
+// defining variables for the API data
 var drinkId;
 var drinkName;
 var instructions;
@@ -374,3 +381,23 @@ $("#mix-it").on("click", function () {
 
 //calls the mistake history function on line 110 so that the browser will load the local storage of the user
 mistakeHistory();
+
+
+//Logic for 21+ checker - TP
+var today = dayjs()
+var date21YearsAgo = today.subtract(21, 'year');
+var formattedDate21YearsAgo = date21YearsAgo.format('YYYY-MM-DD')
+var selectedDate
+
+
+function getSelectedDate() {
+  var selectedDate = document.getElementById("datePicker").value;
+  if (selectedDate > formattedDate21YearsAgo){
+    alert("You are NOT allowed on this site. Give us a visit when you're 21!");   
+} else {
+  $('#staticBackdrop').modal('hide');
+}}
+
+document.getElementById("submitBirthday").addEventListener("click", function() {
+  getSelectedDate();
+});
