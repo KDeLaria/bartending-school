@@ -378,6 +378,16 @@ function getSelectedDate() {
   $('#staticBackdrop').modal('hide');
 }}
 
+// Commenting this out for now.  Needs to be activated once page is live.  Button is originally set to hidden then if it is entered "block" takes away current status of hidden.  If no date is selected then it's "none" which keeps it hidden (currently set at none)
+// document.getElementById("datePicker").addEventListener("change", function() {
+//   var submitButton = document.getElementById("submitBirthday");
+//   if (this.value !== "") {
+//     submitButton.style.display = "block";
+//   } else {
+//     submitButton.style.display = "none";
+//   }
+// });
+
 document.getElementById("submitBirthday").addEventListener("click", function() {
   getSelectedDate();
 });
