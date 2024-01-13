@@ -357,6 +357,28 @@ function makeCard() {
   window.location = "./recipe.html";
 }
 
+
+
+$("#mix-it").on("click", function () {
+   console.log("You just clicked on the Mix It button");
+   // Make a sound when hitting the button
+  let mixSound = new Audio("./assets/audio/mixItSound.mp3");
+  mixSound.play();
+   // Determine if the user has selected the correct items
+
+
+   // Put things to do here when the user guesses the correct drink.
+
+
+   // Change the "give up" button to a "Make a card" button when the user answer correctly
+   console.log("Time to change the Give Up button");
+   var giveUpEl = $("#giveUpBtn");
+   giveUpEl.text("Make a drink card");
+   changeGiveUp = true;
+
+});
+
+
 //calls the mistake history function on line 110 so that the browser will load the local storage of the user
 mistakeHistory();
 
