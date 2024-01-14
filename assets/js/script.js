@@ -369,26 +369,26 @@ var date21YearsAgo = today.subtract(21, 'year');
 var formattedDate21YearsAgo = date21YearsAgo.format('YYYY-MM-DD')
 var selectedDate
 
+document.getElementById("datePicker").addEventListener("change", function() {
+  var submitButton = document.getElementById("submitBirthday");
+  if (this.value !== "") {
+    submitButton.style.display = "block";
+  } else {
+    submitButton.style.display = "none";
+  }
+});
 
 function getSelectedDate() {
   var selectedDate = document.getElementById("datePicker").value;
-  if (selectedDate > formattedDate21YearsAgo){
-    alert("You are NOT allowed on this site. Give us a visit when you're 21!");   
-} else {
-  $('#staticBackdrop').modal('hide');
-}}
+  if (selectedDate > formattedDate21YearsAgo) {
+    alert("You are NOT allowed on this site. Give us a visit when you're 21!");
+  } else {
+    $('#staticBackdrop').modal('hide');
+  }
+}
 
-// Commenting this out for now.  Needs to be activated once page is live.  Button is originally set to hidden then if it is entered "block" takes away current status of hidden.  If no date is selected then it's "none" which keeps it hidden (currently set at none)
-// document.getElementById("datePicker").addEventListener("change", function() {
-//   var submitButton = document.getElementById("submitBirthday");
-//   if (this.value !== "") {
-//     submitButton.style.display = "block";
-//   } else {
-//     submitButton.style.display = "none";
-//   }
-// });
+
 
 document.getElementById("submitBirthday").addEventListener("click", function() {
   getSelectedDate();
 });
-

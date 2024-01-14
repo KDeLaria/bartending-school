@@ -18,47 +18,50 @@
 
             <div class="bg-secondary">
                <h1 style="font-size: 50px;">Bartender School</h1>
-               <p style="font-size: 25px;">Your career "on the rocks"? Study up and practice what you learn with this quiz. Thirty popular drinks to know!
+               <p style="font-size: 25px;">Your career "on the rocks"? Study up and practice what you learn with this
+                  quiz. Thirty popular drinks to know!
                </p>
-                        <!-- PJM  Added modal for instructions-->
-            <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog">
-               <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                     <div class="modal-header">
-                        <h5 class="modal-title">Instructions</h5>
-                        </button>
-                     </div>
-                     <div class="modal-body">
-                        <p>When you click the "Make Me A Drink!" button, a picture and name of a random drink will be
-                           displayed on the right of the screen. A list of possible ingredients will be displayed to the
-                           left of the drink. Using the checkboxes, select the items that are need to create the
-                           drink.</p>
-                        <p>If you need a hint, you can click the "Hint" button and it will tell you how many
-                           ingredients are in the drink.</p>
-                        <p>If you do not know the answer, you can click the "Give up" button. The drink will be added
-                           to a list of drinks at bottom right that you need to practice.</p>
-                        <p>Clicking on any of the drinks in your practice list will open a new page with a drink card
-                           you can use for reference.</p>
-                        <p>Click on the "Make Me A Drink!" button again for a new drink.</p>
-                     </div>
-                     <div class="modal-footer">
-                        <button type="button" class="btn btn-lg btn-dark" data-bs-dismiss="modal">Close</button>
+               <!-- PJM  Added modal for instructions-->
+               <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog">
+                  <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <h5 class="modal-title">Instructions</h5>
+                           </button>
+                        </div>
+                        <div class="modal-body">
+                           <p>When you click the "Make Me A Drink!" button, a picture and name of a random drink will be
+                              displayed on the right of the screen. A list of possible ingredients will be displayed to
+                              the
+                              left of the drink. Using the checkboxes, select the items that are need to create the
+                              drink.</p>
+                           <p>If you need a hint, you can click the "Hint" button and it will tell you how many
+                              ingredients are in the drink.</p>
+                           <p>If you do not know the answer, you can click the "Give up" button. The drink will be added
+                              to a list of drinks at bottom right that you need to practice.</p>
+                           <p>Clicking on any of the drinks in your practice list will open a new page with a drink card
+                              you can use for reference.</p>
+                           <p>Click on the "Make Me A Drink!" button again for a new drink.</p>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-lg btn-dark" data-bs-dismiss="modal">Close</button>
+                        </div>
                      </div>
                   </div>
                </div>
-            </div>
-            <!-- Button trigger modal -->
+               <!-- Button trigger modal -->
 
-         <div class="row pt-5 mt-5">
-            <div class="col-md-2 mx-auto">
-               <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#instructionModal">Instructions</button>
-            </div>
-            <div class="col-md-6 mx-auto">
-               <button id="getDrink" type="button" class="btn btn-lg btn-dark">Make me a drink!</button>
-            </div>
-         </div>
+               <div class="row pt-5 mt-5">
+                  <div class="col-md-2 mx-auto">
+                     <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal"
+                        data-bs-target="#instructionModal">Instructions</button>
+                  </div>
+                  <div class="col-md-6 mx-auto">
+                     <button id="getDrink" type="button" class="btn btn-lg btn-dark">Make me a drink!</button>
+                  </div>
+               </div>
 
-         </div>
+            </div>
          </div>
 
          <div class="col-md-4">
@@ -77,16 +80,16 @@
             </div>
          </div>
       </div>
-               <!--This is the end of row 1 using bootstrap-->
-               <!--This is the start of row 2 using bootstrap-->
+      <!--This is the end of row 1 using bootstrap-->
+      <!--This is the start of row 2 using bootstrap-->
       <div class="row">
-            <div class="bg-secondary col-md-8 mt-5" id="ingredients">
-             </div>
+         <div class="bg-secondary col-md-8 mt-5" id="ingredients">
+         </div>
 
 
 
-             
-          <div class="col-md-4 pt-4">
+
+         <div class="col-md-4 pt-4">
             <div class="bg-secondary mx-auto" id="drink-card">
                <img class="card-img-top mx-auto" id="drink-image" src="assets/images/bartender-best-carousel.png"
                   alt="Image of a drink">
@@ -94,160 +97,176 @@
                   <h5 class="card-title text-center" id="drink-name"></h5>
                </div>
             </div>
-          </div>
+         </div>
       </div>
-               <!--This is the end of row 2 using bootstrap-->
+      <!--This is the end of row 2 using bootstrap-->
 
-               <!--This is the start of row 3 using bootstrap-->
-         <div class="row">
+      <!--This is the start of row 3 using bootstrap-->
+      <div class="row">
          <div class="col-md-1">
             <button id="mix-it" class="btn btn-lg btn-dark">Mix it</button>
             <audio src="./assets/audio/martini_shake_pour-34765.mp3" id="dropping-ice" class="d-none"></audio>
          </div>
 
          <div class="col-md-1">
-                  <!-- This is the hint button modal that is triggered upon hover-->
-                  <!-- Button trigger modal -->
+            <!-- This is the hint button modal that is triggered upon hover-->
+            <!-- Button trigger modal -->
 
-             <div class="modal fade" id="hintModal" tabindex="-1" role="dialog">
-                  <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                           <div class="modal-header">
-                              <h5 class="modal-title">Hint</h5>
-                           </div>
-                           <div class="modal-body" id="hintText">
-                              <p></p>
-                           </div>
-                           <div class="modal-footer">
-                              <button type="button" class="btn btn-lg btn-dark" data-bs-dismiss="modal">Close</button>
-                           </div>
-                        </div>
+            <div class="modal fade" id="hintModal" tabindex="-1" role="dialog">
+               <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title">Hint</h5>
+                     </div>
+                     <div class="modal-body" id="hintText">
+                        <p></p>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-lg btn-dark" data-bs-dismiss="modal">Close</button>
                      </div>
                   </div>
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#hintModal">
-                     Hint
-                  </button>
+               </div>
+            </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#hintModal">
+               Hint
+            </button>
 
-               </div> <!-- This is the end of the hint modal -->
+         </div> <!-- This is the end of the hint modal -->
 
-               <div id="btnDiv" class="col-md-3">
-                  <button id="giveUpBtn" class="btn-lg btn-dark">Give up</button>
+         <div id="btnDiv" class="col-md-3">
+            <button id="giveUpBtn" class="btn-lg btn-dark">Give up</button>
+         </div>
+      </div>
+   </div>
+   <!--this is the end of row 3 using bootstrap-->
+
+
+   <!--this is the start of row 4 using bootstrap-->
+
+
+   <div class="row">
+
+      <!-- Job Cards -->
+      <div class="col-md-3">
+         <div class="card">
+            <img class="card-img-top img-fluid" src="assets/images/job1.png" alt="Image of a barback">
+            <div class="card-body">
+               <h5 class="card-title">Barback</h5>
+               <p class="card-text">A barback is the assistant to the Bartender.</p>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-md-3">
+         <div class="card">
+            <img class="card-img-top" src="assets/images/job2.png" alt="Image of a bartender">
+            <div class="card-body">
+               <h5 class="card-title">Bartender</h5>
+               <p class="card-text">Bartenders mix and serve drink orders to patrons.</p>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-md-3">
+         <div class="card">
+            <img class="card-img-top" src="assets/images/job3.png" alt="Image of a bar manager">
+            <div class="card-body">
+               <h5 class="card-title">Bar Manager</h5>
+               <p class="card-text">The Bar Manager is in charge of the bar and crew.</p>
+            </div>
+         </div>
+      </div>
+
+      <!-- Review Mistakes Section -->
+      <div class="col-md-3">
+         <div class="background bg-primary" style="width:250px; height:240px;">
+            <div class="bg-primary">
+               <p>Review Mistakes</p>
+
+               <div>
+                  <p id="mistake1"></p>
+               </div>
+
+               <div>
+                  <p id="mistake2"></p>
+               </div>
+
+               <div>
+                  <p id="mistake3"></p>
+               </div>
+
+               <div>
+                  <p id="mistake4"></p>
+               </div>
+
+               <div>
+                  <p id="mistake5"></p>
                </div>
             </div>
          </div>
-         <!--this is the end of row 3 using bootstrap-->
-
-
-         <!--this is the start of row 4 using bootstrap-->
-
-         
- <div class="row">
-
-    <!-- Job Cards -->
-    <div class="col-md-3">
-        <div class="card">
-            <img class="card-img-top img-fluid" src="assets/images/job1.png" alt="Image of a barback">
-            <div class="card-body">
-                <h5 class="card-title">Barback</h5>
-                <p class="card-text">A barback is the assistant to the Bartender.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="card">
-            <img class="card-img-top" src="assets/images/job2.png" alt="Image of a bartender">
-            <div class="card-body">
-                <h5 class="card-title">Bartender</h5>
-                <p class="card-text">Bartenders mix and serve drink orders to patrons.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="card">
-            <img class="card-img-top" src="assets/images/job3.png" alt="Image of a bar manager">
-            <div class="card-body">
-                <h5 class="card-title">Bar Manager</h5>
-                <p class="card-text">The Bar Manager is in charge of the bar and crew.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Review Mistakes Section -->
-    <div class="col-md-3">
-        <div class="background bg-primary" style="width:250px; height:240px;">
-            <div class="bg-primary">
-                <p>Review Mistakes</p>
-
-                <div>
-                    <p id="mistake1"></p>
-                </div>
-
-                <div>
-                    <p id="mistake2"></p>
-                </div>
-
-                <div>
-                    <p id="mistake3"></p>
-                </div>
-
-                <div>
-                    <p id="mistake4"></p>
-                </div>
-
-                <div>
-                    <p id="mistake5"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-<footer class="container-fluid">
-   <div class="row">
-      <div class="col-8 text-center">
-         <p>Made by Joe, Kevin, Pete, Riley and Tyler.</p>
-         <p>&copy; 2024</p>
       </div>
-      <div class="col-4">
-         <div class="card">
-            <h5 class="text-center">Drink Responsibly</h5>
-            <a href="https://www.samhsa.gov/find-help/national-helpline" target="_blank"
-               class="card-bottom">
-               <img src="./assets/images/national-helpline-card.png" class="card-img"
-                  alt="SAMHSA's National Helpline">
-            </a>
+
+
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">ENTER BIRTHDAY - MUST BE 21!</h5>
+               </div>
+               <label for="datePicker">Select a date:</label>
+               <input type="date" id="datePicker">
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="submitBirthday"
+                     style="display:none button">Submit</button>
+               </div>
+            </div>
          </div>
       </div>
    </div>
-</footer>
 
- <!-- Age Verification Modal - TP -->
- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h5 class="modal-title" id="staticBackdropLabel">ENTER BIRTHDAY - MUST BE 21!</h5>
-       </div>
-       <label for="datePicker">Select a date:</label>
-       <input type="date" id="datePicker">
-       <div class="modal-footer">
-         <!-- added a display none to hide submit button until the user selects a date -->
-         <button type="button" class="btn btn-primary" id="submitBirthday" style="display:none;">Submit</button>
-       </div>
-       </div>
-     </div>
-   </div>
- </div>
+   <footer class="container-fluid">
+      <div class="row">
+         <div class="col-8 text-center">
+            <p>Made by Joe, Kevin, Pete, Riley and Tyler.</p>
+            <p>&copy; 2024</p>
+         </div>
+         <div class="col-4">
+            <div class="card">
+               <h5 class="text-center">Drink Responsibly</h5>
+               <a href="https://www.samhsa.gov/find-help/national-helpline" target="_blank" class="card-bottom">
+                  <img src="./assets/images/national-helpline-card.png" class="card-img"
+                     alt="SAMHSA's National Helpline">
+               </a>
 
- 
+            </div>
+         </div>
+   </footer>
 
- <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-   <script src="./assets/js/script.js"></script>
+   <!-- Age Verification Modal - TP -->
+   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="staticBackdropLabel">ENTER BIRTHDAY - MUST BE 21!</h5>
+               <label for="datePicker">Select a date:</label>
+               <input type="date" id="datePicker">
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="submitBirthday" style="display:none">Submit</button>
+               </div>
+            </div>
+         </div>
+      </div>
+
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
