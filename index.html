@@ -93,7 +93,6 @@
             <div class="row ">
                <div class="col-md-4 pt-5 mt-5">
                   <button id="mix-it" class="btn btn-lg btn-dark">Mix it</button>
-                  <audio src="./assets/audio/martini_shake_pour-34765.mp3" id="dropping-ice" class="d-none"></audio>
                </div>
 
                <div class="col-md-4 pt-5 mt-5">
@@ -139,109 +138,88 @@
       </div>
       <!--This is the end of row 2 using bootstrap-->
 
-      <!--this is the start of row 3 using bootstrap-->
 
+   <div class="row">
 
-      <div class="row">
-
-         <!-- Job Cards -->
-         <div class="col-md-3">
-            <div class="card">
-               <img class="card-img-top img-fluid" src="assets/images/job1.png" alt="Image of a barback">
-               <div class="card-body">
-                  <h5 class="card-title">Barback</h5>
-                  <p class="card-text">A barback is the assistant to the Bartender.</p>
-               </div>
+      <!-- Job Cards -->
+      <div class="col-md-3">
+         <div class="card">
+            <img class="card-img-top img-fluid" src="assets/images/job1.png" alt="Image of a barback">
+            <div class="card-body">
+               <h5 class="card-title">Barback</h5>
+               <p class="card-text">A barback is the assistant to the Bartender.</p>
             </div>
          </div>
+      </div>
 
-         <div class="col-md-3">
-            <div class="card">
-               <img class="card-img-top" src="assets/images/job2.png" alt="Image of a bartender">
-               <div class="card-body">
-                  <h5 class="card-title">Bartender</h5>
-                  <p class="card-text">Bartenders mix and serve drink orders to patrons.</p>
-               </div>
+      <div class="col-md-3">
+         <div class="card">
+            <img class="card-img-top" src="assets/images/job2.png" alt="Image of a bartender">
+            <div class="card-body">
+               <h5 class="card-title">Bartender</h5>
+               <p class="card-text">Bartenders mix and serve drink orders to patrons.</p>
             </div>
          </div>
+      </div>
 
-         <div class="col-md-3">
-            <div class="card">
-               <img class="card-img-top" src="assets/images/job3.png" alt="Image of a bar manager">
-               <div class="card-body">
-                  <h5 class="card-title">Bar Manager</h5>
-                  <p class="card-text">The Bar Manager is in charge of the bar and crew.</p>
-               </div>
+      <div class="col-md-3">
+         <div class="card">
+            <img class="card-img-top" src="assets/images/job3.png" alt="Image of a bar manager">
+            <div class="card-body">
+               <h5 class="card-title">Bar Manager</h5>
+               <p class="card-text">The Bar Manager is in charge of the bar and crew.</p>
             </div>
          </div>
+      </div>
 
-         <!-- Review Mistakes Section -->
-         <div class="col-md-3">
-            <div class="background bg-primary">
-               <div class="bg-primary">
-                  <p>Review Mistakes</p>
+    <!-- Review Mistakes Section -->
+    <div class="col-md-3">
+        <div class="background bg-primary" style="width:250px; height:240px;">
+            <div class="bg-primary">
+               <p>Review Mistakes</p>
 
-                  <div>
-                     <p id="mistake1"></p>
-                  </div>
-
-                  <div>
-                     <p id="mistake2"></p>
-                  </div>
-
-                  <div>
-                     <p id="mistake3"></p>
-                  </div>
-
-                  <div>
-                     <p id="mistake4"></p>
-                  </div>
-
-                  <div>
-                     <p id="mistake5"></p>
-                  </div>
+               <div>
+                  <p id="mistake1"></p>
                </div>
-            </div>
-         </div>
-         <!--this is the end of row 3 using bootstrap-->
-         <!--this is the start of row 4 using bootstrap-->
-         <footer class="container-fluid">
-            <div class="row">
-               <div class="col-8 text-center">
-                  <p>Made by Joe, Kevin, Pete, Riley and Tyler.</p>
-                  <p>&copy; 2024</p>
-               </div>
-               <div class="col-4">
-                  <div class="card">
-                     <h5 class="text-center">Drink Responsibly</h5>
-                     <a href="https://www.samhsa.gov/find-help/national-helpline" target="_blank" class="card-bottom">
-                        <img src="./assets/images/national-helpline-card.png" class="card-img"
-                           alt="SAMHSA's National Helpline">
-                     </a>
-                  </div>
-               </div>
-            </div>
-         </footer>
-         <!--this is the end of row 4 using bootstrap-->
 
-         <!-- Age Verification Modal - TP -->
-         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-               <div class="modal-content">
-                  <div class="modal-header">
-                     <h5 class="modal-title" id="staticBackdropLabel">ENTER BIRTHDAY - MUST BE 21!</h5>
-                  </div>
-                  <label for="datePicker">Select a date:</label>
-                  <input type="date" id="datePicker">
-                  <div class="modal-footer">
-                     <button type="button" class="btn btn-primary" id="submitBirthday">Submit</button>
-                  </div>
+               <div>
+                  <p id="mistake2"></p>
+               </div>
+
+               <div>
+                  <p id="mistake3"></p>
+               </div>
+
+               <div>
+                  <p id="mistake4"></p>
+               </div>
+
+               <div>
+                  <p id="mistake5"></p>
                </div>
             </div>
          </div>
       </div>
    </div>
+
+   <!-- Age Verification Modal - TP -->
+   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="staticBackdropLabel">ENTER BIRTHDAY - MUST BE 21!</h5>
+       </div>
+       <label for="datePicker">Select a date:</label>
+       <input type="date" id="datePicker">
+       <div class="modal-footer">
+         <button type="button" class="btn btn-primary" id="submitBirthday" style="display:none;">Submit</button>
+       </div>
+     </div>
+   </div>
+</div>
+
+
+
 
          <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

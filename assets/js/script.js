@@ -1,7 +1,8 @@
-
 //launch static background age verification modal upon page load - TP
-document.addEventListener('DOMContentLoaded', function () {
-  var ageVerify = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+document.addEventListener("DOMContentLoaded", function () {
+  var ageVerify = new bootstrap.Modal(
+    document.getElementById("staticBackdrop")
+  );
   ageVerify.show();
 });
 
@@ -137,47 +138,25 @@ async function getDrink(drinkId) {
       return response.json();
     })
     .then(function (data) {
-      drinkName = data.drinks[0].strDrink;
-      instructions = data.drinks[0].strInstructions;
-      glass = data.drinks[0].strGlass;
-      thumbnail = data.drinks[0].strDrinkThumb;
-      ingredients = [
-        data.drinks[0].strIngredient1,
-        data.drinks[0].strIngredient2,
-        data.drinks[0].strIngredient3,
-        data.drinks[0].strIngredient4,
-        data.drinks[0].strIngredient5,
-        data.drinks[0].strIngredient6,
-        data.drinks[0].strIngredient7,
-        data.drinks[0].strIngredient8,
-        data.drinks[0].strIngredient9,
-        data.drinks[0].strIngredient10,
-        data.drinks[0].strIngredient11,
-        data.drinks[0].strIngredient12,
-        data.drinks[0].strIngredient13,
-        data.drinks[0].strIngredient14,
-        data.drinks[0].strIngredient15,
-      ];
-      ingredients = ingredients.splice(0, ingredients.indexOf(null)).sort();
+      drinkObject = data.drinks[0];
+      drinkName = drinkObject.strDrink;
+      instructions = drinkObject.strInstructions;
+      glass = drinkObject.strGlass;
+      thumbnail = drinkObject.strDrinkThumb;
+
+      for (i = 0; i < 15; i++) {
+        let strIngredient = "strIngredient" + (i + 1);
+        if (drinkObject[strIngredient]) {
+          ingredients.push(drinkObject[strIngredient].toLowerCase());
+        }
+      }
       console.log(ingredients);
-      measurements = [
-        data.drinks[0].strMeasure1,
-        data.drinks[0].strMeasure2,
-        data.drinks[0].strMeasure3,
-        data.drinks[0].strMeasure4,
-        data.drinks[0].strMeasure5,
-        data.drinks[0].strMeasure6,
-        data.drinks[0].strMeasure7,
-        data.drinks[0].strMeasure8,
-        data.drinks[0].strMeasure9,
-        data.drinks[0].strMeasure10,
-        data.drinks[0].strMeasure11,
-        data.drinks[0].strMeasure12,
-        data.drinks[0].strMeasure13,
-        data.drinks[0].strMeasure14,
-        data.drinks[0].strMeasure15,
-      ];
-      measurements = measurements.splice(0, measurements.indexOf(null));
+      for (i = 0; i < 15; i++) {
+        let strMeasurement = "strMeasurement" + (i + 1).toString();
+        if (drinkObject[strMeasurement]) {
+          ingredients.push(drinkObject[strMeasurement]);
+        }
+      }
 
       // JP assign the variables to the drinkObject
       drinkObject.drinkName = drinkName;
@@ -198,7 +177,7 @@ function generateIngredients(drinkObject) {
   var currentIngredients = [];
 
   for (i = 0; i < correctIngredients.length; i++) {
-    correctIngredients[i] = correctIngredients[i].toLowerCase();
+    correctIngredients[i] = correctIngredients[i];
     currentIngredients.push(correctIngredients[i]);
   }
 
@@ -220,7 +199,7 @@ function renderIngredients(currentIngredients) {
   clearIngredients();
   currentIngredients = currentIngredients.sort();
   const currentIngredientsEl = $("#ingredients");
-// JP create container to hold ingredients
+  // JP create container to hold ingredients
   const ingredientsListEl = $("<div>");
   ingredientsListEl.addClass(
     "container-fluid py-2 my-1 border border-dark text-left"
@@ -302,7 +281,7 @@ function evaluateSelections() {
   selectedIngredients = selectedIngredients.sort();
 
   // JP if both arrays aren't the same length, return, otherwise compare the items in each array
-  if (selectedIngredients.length !== correctIngredients.length) {
+  if (selectedIngredients.length !== correctIngredients.length || correctIngredients.length === 0) {
     console.log("try again!");
     return false;
   } else {
@@ -313,12 +292,12 @@ function evaluateSelections() {
       }
     }
   }
-
+  
   // Change the "give up" button to a "Make a card" button when the user answer correctly
   var giveUpEl = $("#giveUpBtn");
   giveUpEl.text("Make a drink card");
   changeGiveUp = true;
-console.log("correct!");
+  console.log("correct!");
   return true;
 }
 
@@ -362,21 +341,31 @@ function makeCard() {
 //calls the mistake history function on line 110 so that the browser will load the local storage of the user
 mistakeHistory();
 
-
 //Logic for 21+ checker - TP
 var today = dayjs()
 var date21YearsAgo = today.subtract(21, 'year');
 var formattedDate21YearsAgo = date21YearsAgo.format('YYYY-MM-DD')
 var selectedDate
 
+document.getElementById("datePicker").addEventListener("change", function() {
+  var submitButton = document.getElementById("submitBirthday");
+  if (this.value !== "") {
+    submitButton.style.display = "block";
+  } else {
+    submitButton.style.display = "none";
+  }
+});
 
 function getSelectedDate() {
   var selectedDate = document.getElementById("datePicker").value;
-  if (selectedDate > formattedDate21YearsAgo){
-    alert("You are NOT allowed on this site. Give us a visit when you're 21!");   
-} else {
-  $('#staticBackdrop').modal('hide');
-}}
+  if (selectedDate > formattedDate21YearsAgo) {
+    alert("You are NOT allowed on this site. Give us a visit when you're 21!");
+  } else {
+    $('#staticBackdrop').modal('hide');
+  }
+}
+
+
 
 document.getElementById("submitBirthday").addEventListener("click", function() {
   getSelectedDate();
