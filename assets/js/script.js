@@ -104,6 +104,11 @@ var drinkObject = {
   measurements,
 };
 var changeGiveUp = false;
+//Object for storage PJM
+var drinkURL = {
+   drinkName: '',
+   url: ''
+};
 
 // JP function to generate random numbers
 function random(min, max) {
@@ -116,6 +121,9 @@ const getDrinkButton = $("#getDrink");
 
 // JP event listener for the getDrink button, which generates a random drink ID and fetches the drink info from the API
 getDrinkButton.on("click", async function (e) {
+   // Need code here to clear previous drink 
+
+
   $("#btnDiv").removeClass("d-none");
   selectRandomDrink();
   const drink = await getDrink(drinkId);
@@ -180,7 +188,7 @@ function generateIngredients(drinkObject) {
   var currentIngredients = [];
 
   for (i = 0; i < correctIngredients.length; i++) {
-    correctIngredients[i] = correctIngredients[i];
+    correctIngredients[i] = correctIngredients[i];  // What does this line do?  Should the first half be currentIngredients[i]
     currentIngredients.push(correctIngredients[i]);
   }
 
@@ -314,25 +322,34 @@ function evaluateSelections() {
 function mistakeHistory() {
   for (let i = 1; i <= 5; i++) {
     let currentMistake = localStorage.getItem("Mistake Drink " + i);
+    let currentURL = localStorage.getItem("URL"+i);
+    //Remove quotes from string
+    if (currentURL){
+    currentURL=currentURL.slice(1,-1);}
     $("#mistake" + i).text(currentMistake);
+    $("#mistake" + i).attr("href", currentURL);
   }
 }
 
 //jquery call to the give up button
 // let giveUp = $("#giveUpBtn");
 
-//event listener on clock of the give up button. It saves the current drink  name with saveDrink
+//event listener on clock of the give up button. It saves the current drink name and ID number with a partial URL
 $("#giveUpBtn").on("click", function () {
   if (!changeGiveUp) {
-    let saveDrink = drinkObject.drinkName;
-    //Will shift all previous drinks down 1 position, and add the latest drink to the top
+    let saveDrink=drinkObject.drinkName;
+    let saveURL="recipe.html?" + drinkId;
+        //Will shift all previous drinks down 1 position, and add the latest drink to the top
     for (let i = 4; i >= 1; i--) {
-      let recentMistake = localStorage.getItem("Mistake Drink " + i);
+      let recentMistake = JSON.parse(localStorage.getItem("Mistake Drink " + i));
+      let recentURL = JSON.parse(localStorage.getItem("URL"+i));
       if (recentMistake != null) {
-        localStorage.setItem("Mistake Drink " + (i + 1), recentMistake);
+        localStorage.setItem("Mistake Drink " + (i + 1), JSON.stringify(recentMistake));
+        localStorage.setItem("URL"+(i+1), JSON.stringify(recentURL));
       }
     }
-    localStorage.setItem("Mistake Drink 1", saveDrink);
+    localStorage.setItem("Mistake Drink 1", JSON.stringify(saveDrink));
+    localStorage.setItem("URL1", JSON.stringify(saveURL));
 
     //calls the makeHistory function at the end of the click listener so that it can update the content of the page.
     mistakeHistory();
