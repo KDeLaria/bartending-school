@@ -369,20 +369,29 @@ var date21YearsAgo = today.subtract(21, 'year');
 var formattedDate21YearsAgo = date21YearsAgo.format('YYYY-MM-DD')
 var selectedDate
 
+document.getElementById("datePicker").addEventListener("change", function() {
+  var submitButton = document.getElementById("submitBirthday");
+  if (this.value !== "") {
+    submitButton.style.display = "block";
+  } else {
+    submitButton.style.display = "none";
+  }
+});
 
 function getSelectedDate() {
   var selectedDate = document.getElementById("datePicker").value;
-  if (selectedDate > formattedDate21YearsAgo){
-    alert("You are NOT allowed on this site. Give us a visit when you're 21!");   
-} else {
-  $('#staticBackdrop').modal('hide');
-}}
+  if (selectedDate > formattedDate21YearsAgo) {
+    alert("You are NOT allowed on this site. Give us a visit when you're 21!");
+  } else {
+    $('#staticBackdrop').modal('hide');
+  }
+}
+
+
 
 document.getElementById("submitBirthday").addEventListener("click", function() {
   getSelectedDate();
 });
-
-
 document.getElementById("datePicker").addEventListener("change", function() {
   var submitButton = document.getElementById("submitBirthday");
   if (this.value !== "") {
