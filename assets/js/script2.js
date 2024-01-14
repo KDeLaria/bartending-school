@@ -48,7 +48,7 @@ async function getDrink(drinkId) {
       for (i = 0; i < 15; i++) {
         let strMeasure = "strMeasure" + (i + 1);
         if (drinkObject[strMeasure]) {
-          measurements.push(drinkObject[strMeasure]);
+          measurements.push(drinkObject[strMeasure] + " ");
         }
       }
 
