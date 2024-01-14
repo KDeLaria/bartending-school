@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var ageVerify = new bootstrap.Modal(
     document.getElementById("staticBackdrop")
   );
-  ageVerify.show();
+  //ageVerify.show();
 });
 
 // JP array of drink IDs
@@ -143,6 +143,8 @@ async function getDrink(drinkId) {
       instructions = drinkObject.strInstructions;
       glass = drinkObject.strGlass;
       thumbnail = drinkObject.strDrinkThumb;
+      ingredients.length = 0;
+      measurements.length = 0;
 
       for (i = 0; i < 15; i++) {
         let strIngredient = "strIngredient" + (i + 1);
@@ -150,15 +152,16 @@ async function getDrink(drinkId) {
           ingredients.push(drinkObject[strIngredient].toLowerCase());
         }
       }
-      console.log(ingredients);
+      console.log(ingredients.sort());
       for (i = 0; i < 15; i++) {
-        let strMeasurement = "strMeasurement" + (i + 1).toString();
+        let strMeasurement = "strMeasurement" + (i + 1);
         if (drinkObject[strMeasurement]) {
-          ingredients.push(drinkObject[strMeasurement]);
+          measurements.push(drinkObject[strMeasurement]);
         }
       }
 
       // JP assign the variables to the drinkObject
+      drinkObject.drinkId = drinkId;
       drinkObject.drinkName = drinkName;
       drinkObject.instructions = instructions;
       drinkObject.glass = glass;
@@ -197,6 +200,8 @@ function generateIngredients(drinkObject) {
 // JP render the current ingredients on the page
 function renderIngredients(currentIngredients) {
   clearIngredients();
+  $("#giveUpBtn").text("Give Up");
+  changeGiveUp = false;
   currentIngredients = currentIngredients.sort();
   const currentIngredientsEl = $("#ingredients");
   // JP create container to hold ingredients
@@ -208,13 +213,13 @@ function renderIngredients(currentIngredients) {
 
   // JP create row with columns
   const ingredientRowEl = $("<div>");
-  ingredientRowEl.addClass("row row-cols-2 row-cols-md-3");
+  ingredientRowEl.addClass("row row-cols-2 row-cols-md-3 py-2");
   ingredientsListEl.append(ingredientRowEl);
 
   // JP loop through the current ingredients, create a column that holds each checkbox and checkbox label
   for (i = 0; i < currentIngredients.length; i++) {
     const ingredientColumnEl = $("<div>");
-    ingredientColumnEl.addClass("col");
+    ingredientColumnEl.addClass("col py-2");
     ingredientRowEl.append(ingredientColumnEl);
 
     let ingredientCheckbox = $("<input>");
@@ -270,7 +275,7 @@ mixItBtn.on("click", function () {
 function evaluateSelections() {
   const checkboxes = document.querySelectorAll(".form-check-input");
   let selectedIngredients = [];
-  let correctIngredients = drinkObject.ingredients;
+  let correctIngredients = drinkObject.ingredients.sort();
 
   // JP loop through selected items and add them to an array
   for (i = 0; i < checkboxes.length; i++) {
@@ -281,7 +286,10 @@ function evaluateSelections() {
   selectedIngredients = selectedIngredients.sort();
 
   // JP if both arrays aren't the same length, return, otherwise compare the items in each array
-  if (selectedIngredients.length !== correctIngredients.length || correctIngredients.length === 0) {
+  if (
+    selectedIngredients.length !== correctIngredients.length ||
+    correctIngredients.length === 0
+  ) {
     console.log("try again!");
     return false;
   } else {
@@ -292,7 +300,7 @@ function evaluateSelections() {
       }
     }
   }
-  
+
   // Change the "give up" button to a "Make a card" button when the user answer correctly
   var giveUpEl = $("#giveUpBtn");
   giveUpEl.text("Make a drink card");
@@ -328,6 +336,7 @@ $("#giveUpBtn").on("click", function () {
 
     //calls the makeHistory function at the end of the click listener so that it can update the content of the page.
     mistakeHistory();
+    makeCard();
   } else {
     makeCard();
   }
@@ -335,19 +344,19 @@ $("#giveUpBtn").on("click", function () {
 
 // Calling this function will go to the new page
 function makeCard() {
-  window.location = "./recipe.html";
+  window.open("./recipe.html?" + drinkId, "");
 }
 
 //calls the mistake history function on line 110 so that the browser will load the local storage of the user
 mistakeHistory();
 
 //Logic for 21+ checker - TP
-var today = dayjs()
-var date21YearsAgo = today.subtract(21, 'year');
-var formattedDate21YearsAgo = date21YearsAgo.format('YYYY-MM-DD')
-var selectedDate
+var today = dayjs();
+var date21YearsAgo = today.subtract(21, "year");
+var formattedDate21YearsAgo = date21YearsAgo.format("YYYY-MM-DD");
+var selectedDate;
 
-document.getElementById("datePicker").addEventListener("change", function() {
+document.getElementById("datePicker").addEventListener("change", function () {
   var submitButton = document.getElementById("submitBirthday");
   if (this.value !== "") {
     submitButton.style.display = "block";
@@ -361,22 +370,12 @@ function getSelectedDate() {
   if (selectedDate > formattedDate21YearsAgo) {
     alert("You are NOT allowed on this site. Give us a visit when you're 21!");
   } else {
-    $('#staticBackdrop').modal('hide');
+    $("#staticBackdrop").modal("hide");
   }
 }
 
-
-
-document.getElementById("submitBirthday").addEventListener("click", function() {
-  getSelectedDate();
-});
-
-
-document.getElementById("datePicker").addEventListener("change", function() {
-  var submitButton = document.getElementById("submitBirthday");
-  if (this.value !== "") {
-    submitButton.style.display = "block";
-  } else {
-    submitButton.style.display = "none";
-  }
-});
+document
+  .getElementById("submitBirthday")
+  .addEventListener("click", function () {
+    getSelectedDate();
+  });
