@@ -361,3 +361,13 @@ document
   .addEventListener("click", function () {
     getSelectedDate();
   });
+
+
+document.getElementById("datePicker").addEventListener("change", function() {
+  var submitButton = document.getElementById("submitBirthday");
+  if (this.value !== "") {
+    submitButton.style.display = "block";
+  } else {
+    submitButton.style.display = "none";
+  }
+});
