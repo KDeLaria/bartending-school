@@ -16,96 +16,79 @@ var drinkObject = {
 
 //grab drinkID from URL
 var indexTwoURL = window.location.href;
-var cocktailIDArray = indexTwoURL.split('?');
-var drinkId = cocktailIDArray[1]
+var cocktailIDArray = indexTwoURL.split("?");
+var drinkId = cocktailIDArray[1];
 
-console.log(drinkId)
+console.log(drinkId);
 
 async function getDrink(drinkId) {
-    var drinkUrl =
-      "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId;
-  
-    await fetch(drinkUrl)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-          drinkName = data.drinks[0].strDrink;
-          instructions = data.drinks[0].strInstructions;
-          glass = data.drinks[0].strGlass;
-          thumbnail = data.drinks[0].strDrinkThumb;
-          ingredients = [
-            data.drinks[0].strIngredient1,
-            data.drinks[0].strIngredient2,
-            data.drinks[0].strIngredient3,
-            data.drinks[0].strIngredient4,
-            data.drinks[0].strIngredient5,
-            data.drinks[0].strIngredient6,
-            data.drinks[0].strIngredient7,
-            data.drinks[0].strIngredient8,
-            data.drinks[0].strIngredient9,
-            data.drinks[0].strIngredient10,
-            data.drinks[0].strIngredient11,
-            data.drinks[0].strIngredient12,
-            data.drinks[0].strIngredient13,
-            data.drinks[0].strIngredient14,
-            data.drinks[0].strIngredient15,
-          ];
-          ingredients = ingredients.splice(0, ingredients.indexOf(null));
-          measurements = [
-            data.drinks[0].strMeasure1,
-            data.drinks[0].strMeasure2,
-            data.drinks[0].strMeasure3,
-            data.drinks[0].strMeasure4,
-            data.drinks[0].strMeasure5,
-            data.drinks[0].strMeasure6,
-            data.drinks[0].strMeasure7,
-            data.drinks[0].strMeasure8,
-            data.drinks[0].strMeasure9,
-            data.drinks[0].strMeasure10,
-            data.drinks[0].strMeasure11,
-            data.drinks[0].strMeasure12,
-            data.drinks[0].strMeasure13,
-            data.drinks[0].strMeasure14,
-            data.drinks[0].strMeasure15,
-          ];
-          measurements = measurements.splice(0, measurements.indexOf(null));
-  
-        // assign the variables to the drinkObject
-        drinkObject.drinkName = drinkName;
-        drinkObject.instructions = instructions;
-        drinkObject.glass = glass;
-        drinkObject.thumbnail = thumbnail;
-        drinkObject.ingredients = ingredients;
-        drinkObject.measurements = measurements;
-      });
-      generateIngredients(drinkObject);
-  }
-   
-getDrink(drinkId)
+  var drinkUrl =
+    "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId;
 
+  await fetch(drinkUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      drinkObject = data.drinks[0];
+      drinkName = drinkObject.strDrink;
+      instructions = drinkObject.strInstructions;
+      glass = drinkObject.strGlass;
+      thumbnail = drinkObject.strDrinkThumb;
+      ingredients.length = 0;
+      measurements.length = 0;
 
-  function generateIngredients(drinkObject) {
+      for (i = 0; i < 15; i++) {
+        let strIngredient = "strIngredient" + (i + 1);
+        if (drinkObject[strIngredient]) {
+          ingredients.push(drinkObject[strIngredient].toLowerCase());
+        }
+      }
 
-    
-    $('#drink-name').text(drinkObject.drinkName);
-    $('#glass').text(drinkObject.glass);
-    $('#instructions').text(drinkObject.instructions);
-    $('#thumbnail').attr("src",drinkObject.thumbnail);  
-    
-    for (let i = 0; i < drinkObject.ingredients.length; i++) {
-          $('#step' + i).text((drinkObject.measurements[i] || '') + drinkObject.ingredients[i]);  
+      for (i = 0; i < 15; i++) {
+        let strMeasure = "strMeasure" + (i + 1);
+        if (drinkObject[strMeasure]) {
+          measurements.push(drinkObject[strMeasure]);
+        }
+      }
+
+      // JP assign the variables to the drinkObject
+      drinkObject.drinkId = drinkId;
+      drinkObject.drinkName = drinkName;
+      drinkObject.instructions = instructions;
+      drinkObject.glass = glass;
+      drinkObject.thumbnail = thumbnail;
+      drinkObject.ingredients = ingredients;
+      drinkObject.measurements = measurements;
+    });
+  $("#drink-name").text(drinkObject.drinkName);
+  $("#drink-image").attr("src", drinkObject.thumbnail);
+
+  generateIngredients(drinkObject);
+}
+
+getDrink(drinkId);
+
+function generateIngredients(drinkObject) {
+  $("#drink-name").text(drinkObject.drinkName);
+  $("#glass").text(drinkObject.glass);
+  $("#instructions").text(drinkObject.instructions);
+  $("#thumbnail").attr("src", drinkObject.thumbnail);
+
+  for (let i = 0; i < drinkObject.ingredients.length; i++) {
+    $("#step" + i).text(
+      (drinkObject.measurements[i] || "") + drinkObject.ingredients[i]
+    );
   }
 }
 
 window.onload = function () {
-  document.getElementById('downloadPdf').addEventListener('click', function () {
-      generatePdf();
+  document.getElementById("downloadPdf").addEventListener("click", function () {
+    generatePdf();
   });
 };
 
 function generatePdf() {
-  var element = document.querySelector('.container');
+  var element = document.querySelector(".container");
   html2pdf(element);
 }
-

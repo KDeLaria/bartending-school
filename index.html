@@ -57,7 +57,7 @@
                         data-bs-target="#instructionModal">Instructions</button>
                   </div>
                   <div class="col-md-3">
-                     <button id="getDrink" type="button" class="btn btn-lg btn-dark">Make me a drink!</button>
+                     <button id="getDrink" type="button" class="btn btn-lg btn-dark" disabled>Make me a drink!</button>
                   </div>
                </div>
 
@@ -92,7 +92,7 @@
 
             <div class="row ">
                <div class="col-md-4 pt-5 mt-5">
-                  <button id="mix-it" class="btn btn-lg btn-dark">Mix it</button>
+                  <button id="mix-it" class="btn btn-lg btn-dark" disabled>Mix it</button>
                </div>
 
                <div class="col-md-4 pt-5 mt-5">
@@ -115,14 +115,14 @@
                      </div>
                   </div>
                   <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#hintModal">
+                  <button type="button" class="btn btn-lg btn-dark" id="hintBtn" data-bs-toggle="modal" data-bs-target="#hintModal" disabled>
                      Hint
                   </button>
 
                </div> <!-- This is the end of the hint modal -->
 
                <div id="btnDiv" class="col-md-4 pt-5 mt-5">
-                  <button id="giveUpBtn" class="btn-lg btn-dark">Give up</button>
+                  <button id="giveUpBtn" class="btn btn-lg btn-dark" disabled>Give up</button>
                </div>
             </div>
          </div>

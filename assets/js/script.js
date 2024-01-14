@@ -120,6 +120,9 @@ getDrinkButton.on("click", async function (e) {
   selectRandomDrink();
   const drink = await getDrink(drinkId);
   generateIngredients(drink);
+  mixItBtn.removeAttr("disabled");
+  $("#hintBtn").removeAttr("disabled");
+  $("#giveUpBtn").removeAttr("disabled");
 });
 
 // JP generate a random drinkId from the above array
@@ -154,9 +157,9 @@ async function getDrink(drinkId) {
       }
       console.log(ingredients.sort());
       for (i = 0; i < 15; i++) {
-        let strMeasurement = "strMeasurement" + (i + 1);
-        if (drinkObject[strMeasurement]) {
-          measurements.push(drinkObject[strMeasurement]);
+        let strMeasure = "strMeasure" + (i + 1);
+        if (drinkObject[strMeasure]) {
+          measurements.push(drinkObject[strMeasure]);
         }
       }
 
