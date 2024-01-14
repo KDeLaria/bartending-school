@@ -338,7 +338,7 @@ function mistakeHistory() {
 $("#giveUpBtn").on("click", function () {
   if (!changeGiveUp) {
     let saveDrink=drinkObject.drinkName;
-    let saveURL="recipe.html/?=" + drinkId;
+    let saveURL="recipe.html?" + drinkId;
         //Will shift all previous drinks down 1 position, and add the latest drink to the top
     for (let i = 4; i >= 1; i--) {
       let recentMistake = JSON.parse(localStorage.getItem("Mistake Drink " + i));
