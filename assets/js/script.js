@@ -1,7 +1,8 @@
-
 //launch static background age verification modal upon page load - TP
-document.addEventListener('DOMContentLoaded', function () {
-  var ageVerify = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+document.addEventListener("DOMContentLoaded", function () {
+  var ageVerify = new bootstrap.Modal(
+    document.getElementById("staticBackdrop")
+  );
   ageVerify.show();
 });
 
@@ -142,43 +143,20 @@ async function getDrink(drinkId) {
       instructions = drinkObject.strInstructions;
       glass = drinkObject.strGlass;
       thumbnail = drinkObject.strDrinkThumb;
-      ingredients = [
-        drinkObject.strIngredient1,
-        drinkObject.strIngredient2,
-        drinkObject.strIngredient3,
-        drinkObject.strIngredient4,
-        drinkObject.strIngredient5,
-        drinkObject.strIngredient6,
-        drinkObject.strIngredient7,
-        drinkObject.strIngredient8,
-        drinkObject.strIngredient9,
-        drinkObject.strIngredient10,
-        drinkObject.strIngredient11,
-        drinkObject.strIngredient12,
-        drinkObject.strIngredient13,
-        drinkObject.strIngredient14,
-        drinkObject.strIngredient15,
-      ];
-      ingredients = ingredients.splice(0, ingredients.indexOf(null)).sort();
+
+      for (i = 0; i < 15; i++) {
+        let strIngredient = "strIngredient" + (i + 1);
+        if (drinkObject[strIngredient]) {
+          ingredients.push(drinkObject[strIngredient].toLowerCase());
+        }
+      }
       console.log(ingredients);
-      measurements = [
-        drinkObject.strMeasure1,
-        drinkObject.strMeasure2,
-        drinkObject.strMeasure3,
-        drinkObject.strMeasure4,
-        drinkObject.strMeasure5,
-        drinkObject.strMeasure6,
-        drinkObject.strMeasure7,
-        drinkObject.strMeasure8,
-        drinkObject.strMeasure9,
-        drinkObject.strMeasure10,
-        drinkObject.strMeasure11,
-        drinkObject.strMeasure12,
-        drinkObject.strMeasure13,
-        drinkObject.strMeasure14,
-        drinkObject.strMeasure15,
-      ];
-      measurements = measurements.splice(0, measurements.indexOf(null));
+      for (i = 0; i < 15; i++) {
+        let strMeasurement = "strMeasurement" + (i + 1).toString();
+        if (drinkObject[strMeasurement]) {
+          ingredients.push(drinkObject[strMeasurement]);
+        }
+      }
 
       // JP assign the variables to the drinkObject
       drinkObject.drinkName = drinkName;
@@ -199,7 +177,7 @@ function generateIngredients(drinkObject) {
   var currentIngredients = [];
 
   for (i = 0; i < correctIngredients.length; i++) {
-    correctIngredients[i] = correctIngredients[i].toLowerCase();
+    correctIngredients[i] = correctIngredients[i];
     currentIngredients.push(correctIngredients[i]);
   }
 
@@ -221,7 +199,7 @@ function renderIngredients(currentIngredients) {
   clearIngredients();
   currentIngredients = currentIngredients.sort();
   const currentIngredientsEl = $("#ingredients");
-// JP create container to hold ingredients
+  // JP create container to hold ingredients
   const ingredientsListEl = $("<div>");
   ingredientsListEl.addClass(
     "container-fluid py-2 my-1 border border-dark text-left"
@@ -303,7 +281,7 @@ function evaluateSelections() {
   selectedIngredients = selectedIngredients.sort();
 
   // JP if both arrays aren't the same length, return, otherwise compare the items in each array
-  if (selectedIngredients.length !== correctIngredients.length) {
+  if (selectedIngredients.length !== correctIngredients.length || correctIngredients.length === 0) {
     console.log("try again!");
     return false;
   } else {
@@ -314,12 +292,12 @@ function evaluateSelections() {
       }
     }
   }
-
+  
   // Change the "give up" button to a "Make a card" button when the user answer correctly
   var giveUpEl = $("#giveUpBtn");
   giveUpEl.text("Make a drink card");
   changeGiveUp = true;
-console.log("correct!");
+  console.log("correct!");
   return true;
 }
 
@@ -363,23 +341,23 @@ function makeCard() {
 //calls the mistake history function on line 110 so that the browser will load the local storage of the user
 mistakeHistory();
 
-
 //Logic for 21+ checker - TP
-var today = dayjs()
-var date21YearsAgo = today.subtract(21, 'year');
-var formattedDate21YearsAgo = date21YearsAgo.format('YYYY-MM-DD')
-var selectedDate
-
+var today = dayjs();
+var date21YearsAgo = today.subtract(21, "year");
+var formattedDate21YearsAgo = date21YearsAgo.format("YYYY-MM-DD");
+var selectedDate;
 
 function getSelectedDate() {
   var selectedDate = document.getElementById("datePicker").value;
-  if (selectedDate > formattedDate21YearsAgo){
-    alert("You are NOT allowed on this site. Give us a visit when you're 21!");   
-} else {
-  $('#staticBackdrop').modal('hide');
-}}
+  if (selectedDate > formattedDate21YearsAgo) {
+    alert("You are NOT allowed on this site. Give us a visit when you're 21!");
+  } else {
+    $("#staticBackdrop").modal("hide");
+  }
+}
 
-document.getElementById("submitBirthday").addEventListener("click", function() {
-  getSelectedDate();
-});
-
+document
+  .getElementById("submitBirthday")
+  .addEventListener("click", function () {
+    getSelectedDate();
+  });
