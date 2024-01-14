@@ -111,8 +111,10 @@ function random(min, max) {
   return num;
 }
 
-// JP defining variable for the getDrink button
-const getDrinkButton = $("#getDrink");
+// JP defining variable for each button
+let getDrinkButton = $("#getDrink");
+let hintButton = $("#hintBtn");
+let giveUpButton = $("#giveUpBtn");
 
 // JP event listener for the getDrink button, which generates a random drink ID and fetches the drink info from the API
 getDrinkButton.on("click", async function (e) {
@@ -120,10 +122,20 @@ getDrinkButton.on("click", async function (e) {
   selectRandomDrink();
   const drink = await getDrink(drinkId);
   generateIngredients(drink);
+  getDrinkButton.attr("style", "display: none");
   mixItBtn.removeAttr("disabled");
-  $("#hintBtn").removeAttr("disabled");
-  $("#giveUpBtn").removeAttr("disabled");
+  hintButton.removeAttr("disabled");
+  giveUpButton.removeAttr("disabled");
 });
+
+async function toggleButton(button) {
+  if (button.attr("disabled")) {
+    button.removeAttr("disabled");
+  }
+  else {
+    button.attr("disabled");
+  }
+}
 
 // JP generate a random drinkId from the above array
 function selectRandomDrink() {
@@ -183,7 +195,6 @@ function generateIngredients(drinkObject) {
   var currentIngredients = [];
 
   for (i = 0; i < correctIngredients.length; i++) {
-    correctIngredients[i] = correctIngredients[i];
     currentIngredients.push(correctIngredients[i]);
   }
 
@@ -343,6 +354,7 @@ $("#giveUpBtn").on("click", function () {
   } else {
     makeCard();
   }
+  getDrinkButton.attr("style", "display: unset");
 });
 
 // Calling this function will go to the new page
