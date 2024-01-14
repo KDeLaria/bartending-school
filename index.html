@@ -12,7 +12,7 @@
 <body style="background-image: url('assets/images/wallpaper.png');">
    <div class="container bg-secondary">
       <!--This is the start of row 1 using bootstrap-->
-      <div class="row">
+      <div class="row pt-3">
 
          <div class="col-md-8">
 
@@ -51,15 +51,14 @@
                </div>
                <!-- Button trigger modal -->
 
-               <div class="row pt-5 mt-5">
-                  <div class="col-md-2 mx-auto">
-                     <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal"
-                        data-bs-target="#instructionModal">Instructions</button>
-                  </div>
-                  <div class="col-md-6 mx-auto">
-                     <button id="getDrink" type="button" class="btn btn-lg btn-dark">Make me a drink!</button>
-                  </div>
-               </div>
+         <div class="row pt-5 mt-5">
+            <div class="col-md-2">
+               <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#instructionModal">Instructions</button>
+            </div>
+            <div class="col-md-3">
+               <button id="getDrink" type="button" class="btn btn-lg btn-dark">Make me a drink!</button>
+            </div>
+         </div>
 
             </div>
          </div>
@@ -80,69 +79,63 @@
             </div>
          </div>
       </div>
-      <!--This is the end of row 1 using bootstrap-->
-      <!--This is the start of row 2 using bootstrap-->
-      <div class="row">
-         <div class="bg-secondary col-md-8 mt-5" id="ingredients">
-         </div>
+               <!--This is the end of row 1 using bootstrap-->
+               <!--This is the start of row 2 using bootstrap-->
+      <div class="row align-items-end mx-auto">
+         <div class="bg-secondary col-md-8 mt-5 p-5">
+      <div id="ingredients">
+             </div>
 
-
-
-
-         <div class="col-md-4 pt-4">
+             <div class="row ">
+               <div class="col-md-4 pt-5 mt-5">
+                  <button id="mix-it" class="btn btn-lg btn-dark">Mix it</button>
+                  <audio src="./assets/audio/martini_shake_pour-34765.mp3" id="dropping-ice" class="d-none"></audio>
+               </div>
+      
+               <div class="col-md-4 pt-5 mt-5">
+                        <!-- This is the hint button modal that is triggered upon hover-->
+                        <!-- Button trigger modal -->
+      
+                   <div class="modal fade" id="hintModal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                 <div class="modal-header">
+                                    <h5 class="modal-title">Hint</h5>
+                                 </div>
+                                 <div class="modal-body" id="hintText">
+                                    <p></p>
+                                 </div>
+                                 <div class="modal-footer">
+                                    <button type="button" class="btn btn-lg btn-dark" data-bs-dismiss="modal">Close</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#hintModal">
+                           Hint
+                        </button>
+      
+                     </div> <!-- This is the end of the hint modal -->
+      
+                     <div id="btnDiv" class="col-md-4 pt-5 mt-5">
+                        <button id="giveUpBtn" class="btn-lg btn-dark">Give up</button>
+                     </div>
+                  </div>
+         </div>  
+          <div class="col-md-4 pt-4">
             <div class="bg-secondary mx-auto" id="drink-card">
-               <img class="card-img-top mx-auto" id="drink-image" src="assets/images/bartender-best-carousel.png"
+               <img class="card-img-top mx-auto" id="drink-image" src="assets/images/drink-card.jpg"
                   alt="Image of a drink">
                <div class="card-body">
                   <h5 class="card-title text-center" id="drink-name"></h5>
                </div>
             </div>
-         </div>
+          </div>
       </div>
-      <!--This is the end of row 2 using bootstrap-->
-
-      <!--This is the start of row 3 using bootstrap-->
-      <div class="row">
-         <div class="col-md-1">
-            <button id="mix-it" class="btn btn-lg btn-dark">Mix it</button>
-            <audio src="./assets/audio/martini_shake_pour-34765.mp3" id="dropping-ice" class="d-none"></audio>
-         </div>
-
-         <div class="col-md-1">
-            <!-- This is the hint button modal that is triggered upon hover-->
-            <!-- Button trigger modal -->
-
-            <div class="modal fade" id="hintModal" tabindex="-1" role="dialog">
-               <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                     <div class="modal-header">
-                        <h5 class="modal-title">Hint</h5>
-                     </div>
-                     <div class="modal-body" id="hintText">
-                        <p></p>
-                     </div>
-                     <div class="modal-footer">
-                        <button type="button" class="btn btn-lg btn-dark" data-bs-dismiss="modal">Close</button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#hintModal">
-               Hint
-            </button>
-
-         </div> <!-- This is the end of the hint modal -->
-
-         <div id="btnDiv" class="col-md-3">
-            <button id="giveUpBtn" class="btn-lg btn-dark">Give up</button>
-         </div>
-      </div>
-   </div>
-   <!--this is the end of row 3 using bootstrap-->
-
-
-   <!--this is the start of row 4 using bootstrap-->
+               <!--This is the end of row 2 using bootstrap-->
+  
+         <!--this is the start of row 3 using bootstrap-->
 
 
    <div class="row">
@@ -178,9 +171,9 @@
          </div>
       </div>
 
-      <!-- Review Mistakes Section -->
-      <div class="col-md-3">
-         <div class="background bg-primary" style="width:250px; height:240px;">
+    <!-- Review Mistakes Section -->
+    <div class="col-md-3">
+        <div class="background bg-primary" style="width:250px; height:240px;">
             <div class="bg-primary">
                <p>Review Mistakes</p>
 
@@ -204,45 +197,29 @@
                   <p id="mistake5"></p>
                </div>
             </div>
-         </div>
+        </div>
+    </div>
+<!--this is the end of row 3 using bootstrap-->
+<!--this is the start of row 4 using bootstrap-->
+<footer class="container-fluid">
+   <div class="row">
+      <div class="col-8 text-center">
+         <p>Made by Joe, Kevin, Pete, Riley and Tyler.</p>
+         <p>&copy; 2024</p>
       </div>
-
-
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-         <div class="modal-dialog">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <h5 class="modal-title" id="staticBackdropLabel">ENTER BIRTHDAY - MUST BE 21!</h5>
-               </div>
-               <label for="datePicker">Select a date:</label>
-               <input type="date" id="datePicker">
-               <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" id="submitBirthday"
-                     style="display:none button">Submit</button>
-               </div>
-            </div>
+      <div class="col-4">
+         <div class="card">
+            <h5 class="text-center">Drink Responsibly</h5>
+            <a href="https://www.samhsa.gov/find-help/national-helpline" target="_blank"
+               class="card-bottom">
+               <img src="./assets/images/national-helpline-card.png" class="card-img"
+                  alt="SAMHSA's National Helpline">
+            </a>
          </div>
       </div>
    </div>
-
-   <footer class="container-fluid">
-      <div class="row">
-         <div class="col-8 text-center">
-            <p>Made by Joe, Kevin, Pete, Riley and Tyler.</p>
-            <p>&copy; 2024</p>
-         </div>
-         <div class="col-4">
-            <div class="card">
-               <h5 class="text-center">Drink Responsibly</h5>
-               <a href="https://www.samhsa.gov/find-help/national-helpline" target="_blank" class="card-bottom">
-                  <img src="./assets/images/national-helpline-card.png" class="card-img"
-                     alt="SAMHSA's National Helpline">
-               </a>
-            </div>
-         </div>
-      </div>
-   </footer>
+</footer>
+<!--this is the end of row 4 using bootstrap-->
 
    <!-- Age Verification Modal - TP -->
    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
