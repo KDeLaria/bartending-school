@@ -330,6 +330,8 @@ function evaluateSelections() {
    // PJM Disable the Mix It and hint buttons
    mixItBtn.attr("disabled", "disabled").button('refresh');
    hintButton.attr("disabled", "disabled").button('refresh');
+   // PJM Bring back the Make me a drink button
+   getDrinkButton.removeAttr("style", "display: none");
 
    return true;
 }
