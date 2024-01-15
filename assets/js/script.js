@@ -313,11 +313,13 @@ function evaluateSelections() {
     correctIngredients.length === 0
   ) {
     console.log("try again!");
+    $("#rightWrong").text("Try again!").addClass("neonRed");
     return false;
   } else {
     for (var i = 0; i < selectedIngredients.length; i++) {
       if (selectedIngredients[i] !== correctIngredients[i]) {
         console.log("try again!");
+        $("#rightWrong").text("Try again!").addClass("neonRed");
         return false;
       }
     }
@@ -328,6 +330,7 @@ function evaluateSelections() {
   giveUpEl.text("Make a drink card");
   changeGiveUp = true;
   console.log("correct!");
+  $("#rightWrong").text("Correct!").addClass("neonGreen");
   return true;
 }
 
