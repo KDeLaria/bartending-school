@@ -10,28 +10,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@500&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
-    <title>Recipe Card</title>
+    <title>View Recipe</title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/pageicon.ico">
 </head>
 
-<body>
-    <div class="container border border-dark">
-        <div class="row">
+<body style="background-image: url('assets/images/wallpaper.png'); background-attachment: fixed; min-height: 100%; min-width: 100%; background-size:100% 100%; background-repeat: no-repeat;  overflow-x: hidden;">
+    <div class="container border border-dark bg-secondary">
+        <div class="row pt-3">
             <div class="border border-dark text-center">
                 <h1 id="drink-name"></h1>
             </div>
-
+            <!--Lists instructions for the selected drink-->
             <div class="col-md-6 border border-dark pb-2">
                 <h2>Instructions</h2>
-                <p id="instructions"></p>
-
+                <p id="instructions" class="fs-4"></p>
+                <!--Populates a picture of the drink-->
                 <img id="thumbnail" class=w-100 src="" alt="picture of drink">
 
             </div>
 
-            <div class="col-md-6 border border-dark">
+            <div class="col-md-6 border border-dark fs-2">
                 <h2 id="glass" class="text-center"></h2>
-
-                <!-- need to populate variables? -->
+              <!--Populates the ingredients/steps-->
                 <div>
                     <p id="step0"></p>
                     <p id="step1"></p>
@@ -49,11 +49,11 @@
             </div>
         </div>
     </div>
-
+    <!--Download PDF button-->
     <div class="row pt-2">
         <div class="col-4"></div>
         <button class="centered col-4" id="downloadPdf">Download PDF</button>
-        <div class="col-4"></div>
+        <div class="col-4 bg"></div>
     </div>
 
 
