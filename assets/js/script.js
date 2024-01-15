@@ -252,7 +252,7 @@ function renderIngredients(currentIngredients) {
     ingredientColumnEl.append(ingredientCheckbox);
 
     let ingredientCheckboxLabel = $("<label>");
-    ingredientCheckboxLabel.addClass("form-check-label" + " ingredient" + i);
+    ingredientCheckboxLabel.addClass("form-check-label cinzel" + " ingredient" + i);
     ingredientCheckboxLabel.attr("for", "flexCheckDefault");
     ingredientCheckboxLabel.text(currentIngredients[i]);
     ingredientColumnEl.append(ingredientCheckboxLabel);
