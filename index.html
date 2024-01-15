@@ -6,6 +6,9 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
    <link rel="stylesheet" href="./assets/css/style.css" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@500&display=swap" rel="stylesheet">
    <title>Bartending School</title>
    <link rel="icon" type="image/x-icon" href="./assets/images/pageicon.ico">
 </head>
@@ -18,8 +21,8 @@
          <div class="col-md-8">
 
             <div class="bg-secondary">
-               <h1 style="font-size: 50px;">Bartender School</h1>
-               <p style="font-size: 25px;">Career "on the rocks"? Study up and practice what you learn with this
+               <h1 class= 'fatface text-center' style="font-size: 50px;">Bartender School</h1>
+               <p class= 'cinzel text-center' style="font-size: 25px;">Your career "on the rocks"? Study up and practice what you learn with this
                   quiz. Thirty popular drinks to know!
                </p>
                <!-- PJM  Added modal for instructions-->
@@ -27,11 +30,11 @@
                   <div class="modal-dialog" role="document">
                      <div class="modal-content">
                         <div class="modal-header">
-                           <h5 class="modal-title">Instructions</h5>
+                           <h5 class="modal-title fatface">Instructions</h5>
                            </button>
                         </div>
-                        <div class="modal-body">
-                           <p>When you click the "Make me A drink!" button, a picture and name of a random drink will be
+                        <div class="modal-body cinzel">
+                           <p>When you click the "Make Me A Drink!" button, a picture and name of a random drink will be
                               displayed on the right of the screen. A list of possible ingredients will be displayed to
                               the
                               left of the drink. Using the checkboxes, select the items that are need to create the
@@ -53,13 +56,14 @@
                </div>
                <!-- Button trigger modal -->
 
-               <div class="row pt-3 mt-3">
-                  <div class="col-md-2">
-                     <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal"
+               <div class="row pt-5 mt-5">
+                  <div class="col-md-4 justify-content-center d-flex">
+                     <button type="button" class="btn btn-lg btn-dark cinzel" data-bs-toggle="modal"
                         data-bs-target="#instructionModal">Instructions</button>
                   </div>
-                  <div class="col-md-3">
-                     <button id="getDrink" type="button" class="btn btn-lg btn-dark">Make me a drink!</button>
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4 justify-content-center d-flex">
+                     <button id="getDrink" type="button" class="btn btn-lg btn-dark cinzel">Make me a drink!</button>
                   </div>
                </div>
 
@@ -93,7 +97,7 @@
 
             <div class="row ">
                <div class="col-md-4 pt-5 mt-5" style="display: flex; justify-content: center">
-                  <button id="mix-it" class="btn btn-lg btn-dark" disabled>Mix It Up!</button>
+                  <button id="mix-it" class="btn btn-lg btn-dark cinzel" disabled>Mix it</button>
                </div>
 
                <div class="col-md-4 pt-5 mt-5" style="display: flex; justify-content: center">
@@ -116,14 +120,14 @@
                      </div>
                   </div>
                   <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-lg btn-dark" id="hintBtn" data-bs-toggle="modal" data-bs-target="#hintModal" disabled>
+                  <button type="button" class="btn btn-lg btn-dark cinzel" id="hintBtn" data-bs-toggle="modal" data-bs-target="#hintModal" disabled>
                      Hint
                   </button>
 
                </div> <!-- This is the end of the hint modal -->
 
                <div id="btnDiv" class="col-md-4 pt-5 mt-5" style="display: flex; justify-content: center">
-                  <button id="giveUpBtn" class="btn btn-lg btn-dark" disabled>Give up</button>
+                  <button id="giveUpBtn" class="btn btn-lg btn-dark cinzel" disabled>Give up</button>
                </div>
             </div>
          </div>
@@ -132,7 +136,7 @@
                <img class="card-img-top mx-auto" id="drink-image" src="assets/images/drink-card.jpg"
                   alt="Couple having cocktails by a lake">
                <div class="card-body">
-                  <h5 class="card-title text-center" id="drink-name"></h5>
+                  <h5 class="card-title text-center fatface" style="font-size: 50px;" id="drink-name"></h5>
                </div>
             </div>
          </div>
@@ -145,8 +149,8 @@
             <div class="card">
                <img class="card-img-top img-fluid" src="assets/images/job1.png" alt="Image of a barback">
                <div class="card-body">
-                  <h5 class="card-title">Barback</h5>
-                  <p class="card-text">A barback is the assistant to the Bartender.</p>
+                  <h5 class="card-title fatface">Barback</h5>
+                  <p class="card-text cinzel">A barback is the assistant to the Bartender.</p>
                </div>
             </div>
          </div>
@@ -155,8 +159,8 @@
             <div class="card">
                <img class="card-img-top" src="assets/images/job2.png" alt="Image of a bartender">
                <div class="card-body">
-                  <h5 class="card-title">Bartender</h5>
-                  <p class="card-text">Bartenders mix and serve drink orders to patrons.</p>
+                  <h5 class="card-title fatface">Bartender</h5>
+                  <p class="card-text cinzel">Bartenders mix and serve drink orders to patrons.</p>
                </div>
             </div>
          </div>
@@ -165,36 +169,36 @@
             <div class="card">
                <img class="card-img-top" src="assets/images/job3.png" alt="Image of a bar manager">
                <div class="card-body">
-                  <h5 class="card-title">Bar Manager</h5>
-                  <p class="card-text">The Bar Manager is in charge of the bar and crew.</p>
+                  <h5 class="card-title fatface">Bar Manager</h5>
+                  <p class="card-text cinzel">The Bar Manager is in charge of the bar and crew.</p>
                </div>
             </div>
          </div>
 
          <!-- Review Mistakes Section -->
          <div class="col-md-3">
-            <div class="background">
+            <div class="background text-centered">
                <div>
-                  <p style="font-size: 25px;">Review Mistakes</p>
+                  <p class='fatface text-decoration-underline' style="font-size: 35px;">Review Mistakes</p>
 
                   <div>
-                     <a id="mistake1" target="_blank" class="link-dark"></a>
+                     <a id="mistake1" style="font-size: 25px;" target="_blank" class="link-dark cinzel"></a>
                   </div>
 
                   <div>
-                     <a id="mistake2" target="_blank" class="link-dark"></a>
+                     <a id="mistake2" style="font-size: 25px;" target="_blank" class="link-dark cinzel"></a>
                   </div>
 
                   <div>
-                     <a id="mistake3" target="_blank" class="link-dark"></a>
+                     <a id="mistake3" style="font-size: 25px;" target="_blank" class="link-dark cinzel"></a>
                   </div>
 
                   <div>
-                     <a id="mistake4" target="_blank" class="link-dark"></a>
+                     <a id="mistake4" style="font-size: 25px;" target="_blank" class="link-dark cinzel"></a>
                   </div>
 
                   <div>
-                     <a id="mistake5" target="_blank" class="link-dark"></a>
+                     <a id="mistake5" style="font-size: 25px;" target="_blank" class="link-dark cinzel"></a>
                   </div>
                </div>
             </div>
@@ -202,7 +206,7 @@
          <!--Row 4 Footer-->
          <footer>
             <div class="row mt-3">
-              <div class="col-9 d-flex align-items-center align-middle justify-content-center fs-3">
+              <div class="col-9 d-flex align-items-center align-middle justify-content-center fs-3 fatface">
                  <p>Made by Joe, Kevin, Pete, Riley and Tyler.</p>
                  <p>&copy; 2024</p>
                </div>
