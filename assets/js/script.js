@@ -327,6 +327,9 @@ function evaluateSelections() {
    giveUpEl.text("View Recipe");
    changeGiveUp = true;
    console.log("correct!");
+   $("#rightWrong").text("Correct!").addClass("neonGreen");
+   
+ 
    // PJM Disable the Mix It and hint buttons
    mixItBtn.attr("disabled", "disabled").button('refresh');
    hintButton.attr("disabled", "disabled").button('refresh');
