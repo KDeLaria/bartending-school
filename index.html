@@ -19,7 +19,7 @@
 
             <div class="bg-secondary">
                <h1 style="font-size: 50px;">Bartender School</h1>
-               <p style="font-size: 25px;">Your career "on the rocks"? Study up and practice what you learn with this
+               <p style="font-size: 25px;">Career "on the rocks"? Study up and practice what you learn with this
                   quiz. Thirty popular drinks to know!
                </p>
                <!-- PJM  Added modal for instructions-->
@@ -31,18 +31,19 @@
                            </button>
                         </div>
                         <div class="modal-body">
-                           <p>When you click the "Make Me A Drink!" button, a picture and name of a random drink will be
+                           <p>When you click the "Make me A drink!" button, a picture and name of a random drink will be
                               displayed on the right of the screen. A list of possible ingredients will be displayed to
                               the
                               left of the drink. Using the checkboxes, select the items that are need to create the
                               drink.</p>
                            <p>If you need a hint, you can click the "Hint" button and it will tell you how many
                               ingredients are in the drink.</p>
+                              <p>When you think you've selected the correct ingredients, click the "Mix It Up!" button.</p>
                            <p>If you do not know the answer, you can click the "Give up" button. The drink will be added
                               to a list of drinks at bottom right that you need to practice.</p>
                            <p>Clicking on any of the drinks in your practice list will open a new page with a drink card
                               you can use for reference.</p>
-                           <p>Click on the "Make Me A Drink!" button again for a new drink.</p>
+                           <p>Click on the "Make me a drink!" button again for a new drink.</p>
                         </div>
                         <div class="modal-footer">
                            <button type="button" class="btn btn-lg btn-dark" data-bs-dismiss="modal">Close</button>
@@ -52,7 +53,7 @@
                </div>
                <!-- Button trigger modal -->
 
-               <div class="row pt-5 mt-5">
+               <div class="row pt-3 mt-3">
                   <div class="col-md-2">
                      <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal"
                         data-bs-target="#instructionModal">Instructions</button>
@@ -92,7 +93,7 @@
 
             <div class="row ">
                <div class="col-md-4 pt-5 mt-5" style="display: flex; justify-content: center">
-                  <button id="mix-it" class="btn btn-lg btn-dark" disabled>Mix it</button>
+                  <button id="mix-it" class="btn btn-lg btn-dark" disabled>Mix It Up!</button>
                </div>
 
                <div class="col-md-4 pt-5 mt-5" style="display: flex; justify-content: center">
@@ -129,7 +130,7 @@
          <div class="col-md-4 pt-4">
             <div class="bg-secondary mx-auto" id="drink-card">
                <img class="card-img-top mx-auto" id="drink-image" src="assets/images/drink-card.jpg"
-                  alt="Image of a drink">
+                  alt="Couple having cocktails by a lake">
                <div class="card-body">
                   <h5 class="card-title text-center" id="drink-name"></h5>
                </div>

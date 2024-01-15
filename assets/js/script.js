@@ -325,7 +325,7 @@ function evaluateSelections() {
 
   // Change the "give up" button to a "Make a card" button when the user answer correctly
   var giveUpEl = $("#giveUpBtn");
-  giveUpEl.text("Make a drink card");
+  giveUpEl.text("View Recipe");
   changeGiveUp = true;
   console.log("correct!");
   return true;
