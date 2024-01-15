@@ -132,6 +132,7 @@ getDrinkButton.on("click", async function (e) {
    mixItBtn.removeAttr("disabled");
    hintButton.removeAttr("disabled");
    giveUpButton.removeAttr("disabled");
+   $('#rightWrong').text('').removeClass("neonGreen neonRed");
 });
 
 // PJM I don't see that the following function is called anywhere
@@ -312,11 +313,13 @@ function evaluateSelections() {
       correctIngredients.length === 0
    ) {
       console.log("try again!");
+      $("#rightWrong").text("Try Again!").addClass("neonRed");
       return false;
    } else {
       for (var i = 0; i < selectedIngredients.length; i++) {
          if (selectedIngredients[i] !== correctIngredients[i]) {
             console.log("try again!");
+            $("#rightWrong").text("Try Again!").addClass("neonRed");
             return false;
          }
       }
@@ -327,6 +330,9 @@ function evaluateSelections() {
    giveUpEl.text("View Recipe");
    changeGiveUp = true;
    console.log("correct!");
+   $("#rightWrong").text("Correct!").addClass("neonGreen").removeClass("neonRed");
+   
+ 
    // PJM Disable the Mix It and hint buttons
    mixItBtn.attr("disabled", "disabled").button('refresh');
    hintButton.attr("disabled", "disabled").button('refresh');
