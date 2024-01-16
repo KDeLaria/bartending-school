@@ -1,4 +1,4 @@
-# Bartending School
+# Bartender School
 
 ## Description 
 This website was designed to teach everyone who wishes to learn how to identify the recipe of ingredients are used in various cocktails.
@@ -44,7 +44,3 @@ Resources:
 *The Cocktail DB API, *[www.thecocktaildb.com/api.php](https://www.thecocktaildb.com/api.php)*. Accessed 10 Jan. 2023.*
 
 *“Immediate play sound on button click in HTML page” Stack Overflow, Paul, *[https://stackoverflow.com/questions/12953928/immediate-play-sound-on-button-click-in-html-page](https://stackoverflow.com/questions/12953928/immediate-play-sound-on-button-click-in-html-page)*. Accessed 13 Jan. 2023.*
-
-## Features
-
-If your project has a lot of features, list them here.
