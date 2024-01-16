@@ -126,7 +126,6 @@ var clearListBtn = $("#clearListBtn");
 
 // JP event listener for the getDrink button, which generates a random drink ID and fetches the drink info from the API
 getDrinkButton.on("click", async function (e) {
-   //$("#btnDiv").removeClass("d-none");   Joe, this line seems incorrect.  btnDiv is for the Give Up button and does not have that class (Joe says he did not put it here)
    selectRandomDrink();
    const drink = await getDrink(drinkId);
    generateIngredients(drink);
@@ -321,8 +320,8 @@ function evaluateSelections() {
    changeGiveUp = true;
    console.log("correct!");
    $("#rightWrong").text("Correct!").addClass("neonGreen").removeClass("neonRed");
-   
- 
+
+
    // PJM Disable the Mix It and hint buttons
    mixItBtn.attr("disabled", "disabled").button('refresh');
    hintButton.attr("disabled", "disabled").button('refresh');
@@ -335,6 +334,7 @@ function evaluateSelections() {
 //rb2277
 //Function that sets the text content of the page to the drinks, and persits upon refresh.
 function mistakeHistory() {
+   let listCount = 0;
    for (let i = 1; i <= 5; i++) {
       let currentMistake = localStorage.getItem("Mistake Drink " + i);
       let currentURL = localStorage.getItem("URL" + i);
@@ -344,9 +344,16 @@ function mistakeHistory() {
       }
       if (currentMistake) {
          currentMistake = currentMistake.slice(1, -1);
+         listCount += 1;
       }
       $("#mistake" + i).text(currentMistake);
       $("#mistake" + i).attr("href", currentURL);
+   }
+   if (listCount !== 0) {
+      clearListBtn.removeAttr("style", "display: none");
+   }
+   else {
+      clearListBtn.attr("style", "display: none");
    }
 }
 
@@ -357,10 +364,11 @@ clearListBtn.on("click", function () {
    for (var i = 1; i <= 5; i++) {
       $("#mistake" + i).text("");
    }
+   // PJM Now hide the button
+   clearListBtn.attr("style", "display: none");
 })
 
 //event listener on click of the give up button. It saves the current drink name and ID number with a partial URL
-// $("#giveUpBtn").on("click", function () {
 giveUpButton.on("click", function () {
    if (!changeGiveUp) {
       let saveDrink = drinkObject.drinkName;
@@ -388,6 +396,8 @@ giveUpButton.on("click", function () {
       makeCard();
    }
    getDrinkButton.attr("style", "display: unset");
+   clearListBtn.removeAttr("style", "display: none");
+
 });
 
 // Calling this function will go to the new page
