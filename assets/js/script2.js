@@ -71,7 +71,7 @@ getDrink(drinkId);
 
 function generateIngredients(drinkObject) {
   $("#drink-name").text(drinkObject.drinkName);
-  $("#glass").text(drinkObject.glass);
+  $("#glass").text("Serve in " + drinkObject.glass);
   $("#instructions").text(drinkObject.instructions);
   $("#thumbnail").attr("src", drinkObject.thumbnail);
 
