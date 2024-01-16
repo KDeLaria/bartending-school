@@ -12,6 +12,9 @@
       rel="stylesheet">
    <title>Bartending School</title>
    <link rel="icon" type="image/x-icon" href="./assets/images/pageicon.ico">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
 </head>
 
 <body
@@ -23,7 +26,7 @@
          <div class="col-md-8">
 
             <div class="bg-secondary">
-               <h1 class='fatface text-center' style="font-size: 50px;">Bartender School</h1>
+               <h1 class='tiltNeon neonBlue text-center' style="font-size: 50px;">Bartender School</h1>
                <p class='cinzel text-center' style="font-size: 25px;">Your career "on the rocks"? Study up and practice
                   what you learn with this
                   quiz. Thirty popular drinks to know!
@@ -64,9 +67,9 @@
                      <button type="button" class="btn btn-lg btn-dark cinzel" data-bs-toggle="modal"
                         data-bs-target="#instructionModal">Instructions</button>
                   </div>
-                  <div class="col-md-4"></div>
+                  <div id= "rightWrong" style="font-size: 50px;" class="col-md-4 tiltNeon text-center"></div>
                   <div class="col-md-4 justify-content-center d-flex">
-                     <button id="getDrink" type="button" class="btn btn-lg btn-dark cinzel">Make me a drink!</button>
+                     <button id="getDrink" style="font-size: 25px;" type="button" class="btn btn-lg btn-dark cinzel">Make me a drink!</button>
                   </div>
                </div>
 
@@ -183,7 +186,7 @@
          <div class="col-md-3">
             <div class="background text-centered">
                <div>
-                  <p class='fatface text-decoration-underline' style="font-size: 35px;">Review Mistakes</p>
+                  <p class='cinzel text-decoration-underline' style="font-size: 35px;">Review Mistakes</p>
 
                   <div>
                      <a id="mistake1" style="font-size: 25px;" target="_blank" class="link-dark cinzel"></a>
