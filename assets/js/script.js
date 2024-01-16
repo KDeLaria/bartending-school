@@ -135,16 +135,6 @@ getDrinkButton.on("click", async function (e) {
    $('#rightWrong').text('').removeClass("neonGreen neonRed");
 });
 
-// PJM I don't see that the following function is called anywhere
-async function toggleButton(button) {
-   if (button.attr("disabled")) {
-      button.removeAttr("disabled");
-   }
-   else {
-      button.attr("disabled");
-   }
-}
-
 // JP generate a random drinkId from the above array
 function selectRandomDrink() {
    const drinkIndex = random(0, drinkList.length);
