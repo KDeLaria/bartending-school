@@ -129,7 +129,7 @@ getDrinkButton.on("click", async function (e) {
    selectRandomDrink();
    const drink = await getDrink(drinkId);
    generateIngredients(drink);
-   getDrinkButton.attr("style", "display: none");
+   getDrinkButton.prop("disabled", true);
    mixItBtn.removeAttr("disabled");
    hintButton.removeAttr("disabled");
    giveUpButton.removeAttr("disabled");
@@ -320,8 +320,9 @@ function evaluateSelections() {
    changeGiveUp = true;
    console.log("correct!");
    $("#rightWrong").text("Correct!").addClass("neonGreen").removeClass("neonRed");
-
-
+   getDrinkButton.prop("disabled", false);
+   
+ 
    // PJM Disable the Mix It and hint buttons
    mixItBtn.attr("disabled", "disabled").button('refresh');
    hintButton.attr("disabled", "disabled").button('refresh');
@@ -373,6 +374,8 @@ giveUpButton.on("click", function () {
    if (!changeGiveUp) {
       let saveDrink = drinkObject.drinkName;
       let saveURL = "recipe.html?" + drinkId;
+      getDrinkButton.prop("disabled", false);
+
       //Will shift all previous drinks down 1 position, and add the latest drink to the top
       for (let i = 4; i >= 1; i--) {
          let recentMistake = JSON.parse(localStorage.getItem("Mistake Drink " + i));
