@@ -184,7 +184,9 @@ async function getDrink(drinkId) {
          drinkObject.measurements = measurements;
       });
    $("#drink-name").text(drinkObject.drinkName);
+   $("#drink-name").addClass("border border-top-0 border-dark py-2");
    $("#drink-image").attr("src", drinkObject.thumbnail);
+   $("#drink-image").attr("alt", "picture of a " + drinkObject.drinkName + " cocktail");
    return drinkObject;
 }
 
@@ -214,14 +216,13 @@ function generateIngredients(drinkObject) {
 function renderIngredients(currentIngredients) {
    clearIngredients();
    giveUpButton.text("Give Up");
-   // $("#giveUpBtn").text("Give Up");
    changeGiveUp = false;
    currentIngredients = currentIngredients.sort();
    const currentIngredientsEl = $("#ingredients");
    // JP create container to hold ingredients
    const ingredientsListEl = $("<div>");
    ingredientsListEl.addClass(
-      "container-fluid py-2 my-1 border border-dark text-left"
+      "container-fluid py-2 my-1 border border-2 border-dark rounded-2 text-left"
    );
    currentIngredientsEl.append(ingredientsListEl);
 

@@ -90,6 +90,8 @@ window.onload = function () {
 
 function generatePdf() {
   var element = document.querySelector(".container");
-  // element.style("background-color: white");
-  html2pdf(element);
+  var opt = {
+    filename: drinkObject.drinkName + " Recipe Card.pdf",
+  }
+  html2pdf(element, opt);
 }
