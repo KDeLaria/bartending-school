@@ -89,7 +89,8 @@ window.onload = function () {
 };
 
 function generatePdf() {
-  var element = document.querySelector(".container");
+  var element = document.querySelector("#pdfPage");
+
   var opt = {
     filename: drinkObject.drinkName + " Recipe Card.pdf",
   }
