@@ -93,6 +93,5 @@ function generatePdf() {
   var opt = {
     filename: drinkObject.drinkName + " Recipe Card.pdf",
   }
-  // element.style("background-color: white");
   html2pdf(element, opt);
 }
