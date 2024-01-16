@@ -54,21 +54,22 @@
                   </div>
                </div>
                <!-- Button trigger modal -->
-
-               <div class="row pt-5 mt-4">
+               <!--Instructions Button-->
+               <div class="row pt-5 mt-4 p-1">
                   <div class="col-md-4 justify-content-center d-flex">
                      <button type="button" class="btn btn-lg btn-dark cinzel" data-bs-toggle="modal"
                         data-bs-target="#instructionModal">Instructions</button>
                   </div>
+               <!--Make me a drink button-->
                   <div id= "rightWrong" style="font-size: 50px;" class="col-md-4 tiltNeon text-center"></div>
-                  <div class="col-md-4 justify-content-center d-flex">
+                  <div class="col-md-4 justify-content-center d-flex p-1">
                      <button id="getDrink" type="button" class="btn btn-lg btn-dark cinzel">Make me a drink!</button>
                   </div>
                </div>
 
             </div>
          </div>
-
+         <!--Caurosel-->
          <div class="col-md-4 d-none d-lg-block">
             <div id="carousel" class="carousel slide d-sm-none d-md-block" data-bs-ride="carousel">
                <div class="carousel-inner">
@@ -91,10 +92,11 @@
       <!--Row 2-->
       <div class="row align-items-end mx-auto">
          <div class="bg-secondary col-md-8 mt-5 p-5">
+            <!--Ingredients div-->
             <div id="ingredients">
             </div>
-
             <div class="row ">
+            <!--Mix button-->
                <div class="col-md-4 pt-5 mt-5" style="display: flex; justify-content: center">
                   <button id="mix-it" class="btn btn-lg btn-dark cinzel" disabled>Mix it Up!</button>
                </div>
@@ -118,20 +120,20 @@
                         </div>
                      </div>
                   </div>
-                  <!-- Button trigger modal -->
+                  <!-- Hint button trigger modal -->
                   <button type="button" class="btn btn-lg btn-dark cinzel" id="hintBtn" data-bs-toggle="modal"
                      data-bs-target="#hintModal" disabled>
                      Hint
                   </button>
-
-               </div> <!-- This is the end of the hint modal -->
-
+               </div>
+               <!--Give up button-->
                <div id="btnDiv" class="col-md-4 pt-5 mt-5" style="display: flex; justify-content: center">
                   <button id="giveUpBtn" class="btn btn-lg btn-dark cinzel" disabled>Give up</button>
                </div>
             </div>
          </div>
-         <div class="col-md-4 pt-4">
+         <!--Drink card image that changes to match random drink-->
+         <div class="col-md-4 pt-4 order-md-2 order-first">
             <div class="bg-secondary mx-auto" id="drink-card">
                <img class="card-img-top mx-auto" id="drink-image" src="assets/images/drink-card.jpg"
                   alt="two cocktails being clinked together">
@@ -244,6 +246,7 @@
             </div>
          </div>
       </div>
+   </div>
       <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
