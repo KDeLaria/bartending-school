@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
    var ageVerify = new bootstrap.Modal(
       document.getElementById("staticBackdrop")
    );
-   //ageVerify.show();
+   ageVerify.show();
 });
 
 // JP array of drink IDs
