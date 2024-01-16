@@ -36,11 +36,15 @@ Resources:
 
 *“Picture of man pouring cocktails” PxHere, *[pxhere.com/en/photo/1529499](https://pxhere.com/en/photo/1529499)*. Accessed 13 Jan. 2023.*
 
-*“Picture of a cocktail” PxHere, *[pxhere.com/en/photo/20464](https://pxhere.com/en/photo/20464)*. Accessed 13 Jan. 2023.*
+*“Cheers picture” Shutter Stock, *[shutterstock.com/image-photo/close-two-people-cheering-cocktails-bar-2293553721](https://www.shutterstock.com/image-photo/close-two-people-cheering-cocktails-bar-2293553721)*. Accessed 17 Jan. 2023.*
 
 *“Bartender waiting” PxHere, *[pxhere.com/en/photo/12762](https://pxhere.com/en/photo/12762)*. Accessed 13 Jan. 2023.*
 
-*“Bartender double pour PxHere, *[pxhere.com/en/photo/1533591](https://pxhere.com/en/photo/1533591)*. Accessed 13 Jan. 2023.*
+*“Bartender double pour” PxHere, *[pxhere.com/en/photo/1533591](https://pxhere.com/en/photo/1533591)*. Accessed 13 Jan. 2023.*
+
+*“Barback picture” iStock, *[istockphoto.com/photo/young-waiter-cleaning-a-counter-gm677115854-124154071](https://www.istockphoto.com/photo/young-waiter-cleaning-a-counter-gm677115854-124154071)*. Accessed 11 Jan. 2023.*
+
+*“Barback picture” iStock, *[istockphoto.com/photo/bartender-preparing-cocktails-gm1297673506-390747521](https://www.istockphoto.com/photo/bartender-preparing-cocktails-gm1297673506-390747521)*. Accessed 11 Jan. 2023.*
 
 *“SAMSHSA Image” Substance Abuse and Mental Health Administration, *[samhsa.gov/find-help/national-helpline](https://www.samhsa.gov/find-help/national-helpline)*. Accessed 12 Jan. 2023.*
 
