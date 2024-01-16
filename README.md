@@ -3,7 +3,7 @@
 Visit the [Bartending School](https://kdelaria.github.io/bartending-school/) webpage.
 
 ## Description 
-This website was designed to teach everyone who wishes to learn how to identify the recipe of ingredients are used in various cocktails.
+This website was designed to teach everyone over 21 who wish to learn how to identify the recipe of ingredients that are used in various cocktails.
 
 
 ## Installation
@@ -18,6 +18,7 @@ Click on the date prompt to select your birthdate. Click on the instructions to 
 ![Bartending School](assets/images/screenshot1.png)
 
 When the **View recipe** button is clicked a printable recipe card for a drink.  When you click on the **Give up** button to add the drink to the list of mistakes. Click on the **Download PDF** button to download a recipe card.
+
 ![Bartending School](assets/images/screenshot2.png)
 
 
