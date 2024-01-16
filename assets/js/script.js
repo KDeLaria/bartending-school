@@ -121,10 +121,12 @@ let getDrinkButton = $("#getDrink");
 let hintButton = $("#hintBtn");
 let giveUpButton = $("#giveUpBtn");
 let mixItBtn = $("#mix-it");
+var hintEl = $("#hintText");
+var clearListBtn = $("#clearListBtn");
 
 // JP event listener for the getDrink button, which generates a random drink ID and fetches the drink info from the API
 getDrinkButton.on("click", async function (e) {
-   $("#btnDiv").removeClass("d-none");
+   //$("#btnDiv").removeClass("d-none");   Joe, this line seems incorrect.  btnDiv is for the Give Up button and does not have that class (Joe says he did not put it here)
    selectRandomDrink();
    const drink = await getDrink(drinkId);
    generateIngredients(drink);
@@ -134,16 +136,6 @@ getDrinkButton.on("click", async function (e) {
    giveUpButton.removeAttr("disabled");
    $('#rightWrong').text('').removeClass("neonGreen neonRed");
 });
-
-// PJM I don't see that the following function is called anywhere
-async function toggleButton(button) {
-   if (button.attr("disabled")) {
-      button.removeAttr("disabled");
-   }
-   else {
-      button.attr("disabled");
-   }
-}
 
 // JP generate a random drinkId from the above array
 function selectRandomDrink() {
@@ -222,7 +214,8 @@ function generateIngredients(drinkObject) {
 // JP render the current ingredients on the page
 function renderIngredients(currentIngredients) {
    clearIngredients();
-   $("#giveUpBtn").text("Give Up");
+   giveUpButton.text("Give Up");
+   // $("#giveUpBtn").text("Give Up");
    changeGiveUp = false;
    currentIngredients = currentIngredients.sort();
    const currentIngredientsEl = $("#ingredients");
@@ -259,8 +252,6 @@ function renderIngredients(currentIngredients) {
    }
 
    // PJM Update the text displayed in the hint modal for how many ingredients in drink
-   var hintEl = $("#hintText");
-
    hintEl.append(
       "<p>There are " +
       drinkObject.ingredients.length +
@@ -284,10 +275,9 @@ function clearIngredients() {
 
 mixItBtn.on("click", function () {
    if (drinkObject) {
+      // Make a sound when hitting the button   
       let mixSound = new Audio("./assets/audio/mixItSound.mp3");
       mixSound.play();
-      // Make a sound when hitting the button
-      // $("#dropping-ice").play();
 
       evaluateSelections();
    }
@@ -326,8 +316,8 @@ function evaluateSelections() {
    }
 
    // Change the "give up" button to a "Make a card" button when the user answer correctly
-   var giveUpEl = $("#giveUpBtn");
-   giveUpEl.text("View Recipe");
+   // var giveUpEl = $("#giveUpBtn");
+   giveUpButton.text("View Recipe");
    changeGiveUp = true;
    console.log("correct!");
    $("#rightWrong").text("Correct!").addClass("neonGreen").removeClass("neonRed");
@@ -360,11 +350,18 @@ function mistakeHistory() {
    }
 }
 
-//jquery call to the give up button
-// let giveUp = $("#giveUpBtn");
+// PJM Clicking the "Clear List" button will clear all items from local storage
+clearListBtn.on("click", function () {
+   localStorage.clear();
+   // PJM Loop through all five mistake items and clear contents
+   for (var i = 1; i <= 5; i++) {
+      $("#mistake" + i).text("");
+   }
+})
 
 //event listener on click of the give up button. It saves the current drink name and ID number with a partial URL
-$("#giveUpBtn").on("click", function () {
+// $("#giveUpBtn").on("click", function () {
+giveUpButton.on("click", function () {
    if (!changeGiveUp) {
       let saveDrink = drinkObject.drinkName;
       let saveURL = "recipe.html?" + drinkId;
